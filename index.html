@@ -14,13 +14,13 @@
         */
         const CONFIG = {
             nombreEmpresa: "COSTA AZUL COMPANY",
-            // PEGA AQUÍ TU NÚMERO (Solo números, ej: 521234567890)
-            whatsapp: "TU_NUMERO_AQUI", 
+            // ENLACE DE CONTACTO DIRECTO
+            linkWhatsapp: "https://w.app/costaazul", 
             
-            // IMAGEN PRINCIPAL (Hero) - Pega el enlace de la foto que quieras
+            // IMAGEN PRINCIPAL (Hero) - Pega el enlace de la foto que quieras aquí
             imagenHero: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
 
-            // CATÁLOGO: Solo pega el URL de la imagen en 'url'
+            // CATÁLOGO: Pega el URL de cualquier imagen de internet en 'url'
             destinos: [
                 {n:"Cancún", url:"https://images.unsplash.com/photo-1506059696013-cc4f1c408c4a?w=600"},
                 {n:"Los Cabos", url:"https://images.unsplash.com/photo-1534063635-f9380029b13b?w=600"},
@@ -88,7 +88,7 @@
             </div>
             <div class="md:w-1/2">
                 <h3 class="text-2xl text-navy uppercase tracking-widest italic mb-6">Servicios Corporativos</h3>
-                <p class="text-xs text-gray-500 leading-loose mb-8">Soluciones logísticas de alta precisión para viajes de negocios y convenciones. Facturación inmediata y atención personalizada.</p>
+                <p class="text-xs text-gray-500 leading-loose mb-8">Soluciones logísticas de alta precisión para viajes de negocios y convenciones internacionales.</p>
                 <a id="btn-wa-corp" href="#" target="_blank" class="border-2 border-navy text-navy px-8 py-3 text-[10px] font-bold uppercase hover:bg-navy hover:text-white transition">Consultar B2B</a>
             </div>
         </div>
@@ -101,10 +101,10 @@
 
     <script>
         // Aplicar CONFIG
-        const waURL = "https://wa.me/" + CONFIG.whatsapp;
+        const finalLink = CONFIG.linkWhatsapp;
         document.getElementById('hero-section').style.backgroundImage = "url('" + CONFIG.imagenHero + "')";
-        document.getElementById('btn-wa').href = waURL;
-        document.getElementById('btn-wa-corp').href = waURL;
+        document.getElementById('btn-wa').href = finalLink;
+        document.getElementById('btn-wa-corp').href = finalLink;
 
         const grid = document.getElementById('grid-destinos');
         CONFIG.destinos.forEach(dest => {
@@ -115,7 +115,7 @@
                     </div>
                     <div class="p-6 text-center">
                         <h6 class="text-xs font-bold text-navy uppercase mb-4 tracking-widest">${dest.n}</h6>
-                        <a href="${waURL}" target="_blank" class="block bg-navy text-white text-[9px] py-3 font-bold uppercase rounded-lg hover:bg-gold hover:text-navy transition duration-300">Solicitar Cotización</a>
+                        <a href="${finalLink}" target="_blank" class="block bg-navy text-white text-[9px] py-3 font-bold uppercase rounded-lg hover:bg-gold hover:text-navy transition duration-300">Solicitar Cotización</a>
                     </div>
                 </div>
             `;
