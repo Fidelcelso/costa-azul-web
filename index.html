@@ -3,122 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Costa Azul Company | Operadora de Viajes</title>
+    <title>Costa Azul Company | Luxury Travel Ops</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;600;900&display=swap" rel="stylesheet">
     
     <script>
-        /* =========================================================
-           PANEL DE CONTROL UNIVERSAL - COSTA AZUL COMPANY
-           =========================================================
-        */
         const CONFIG = {
-            nombreEmpresa: "COSTA AZUL COMPANY",
-            // ENLACE DE CONTACTO DIRECTO
-            linkWhatsapp: "https://w.app/costaazul", 
-            
-            // IMAGEN PRINCIPAL (Hero) - Pega el enlace de la foto que quieras aquí
-            imagenHero: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80",
-
-            // CATÁLOGO: Pega el URL de cualquier imagen de internet en 'url'
+            nombre: "COSTA AZUL",
+            apellido: "COMPANY",
+            contacto: "https://w.app/costaazul",
+            // Foto de fondo principal (Usa una de alta resolución)
+            heroImg: "https://images.unsplash.com/photo-1544124499-183821ddd75a?q=80&w=2000&auto=format&fit=crop",
             destinos: [
-                {n:"Cancún", url:"https://images.unsplash.com/photo-1506059696013-cc4f1c408c4a?w=600"},
-                {n:"Los Cabos", url:"https://images.unsplash.com/photo-1534063635-f9380029b13b?w=600"},
-                {n:"Riviera Maya", url:"https://images.unsplash.com/photo-1540979388789-66795b6c3fa4?w=600"},
-                {n:"Puerto Vallarta", url:"https://images.unsplash.com/photo-1554350341-a3f8551ef417?w=600"},
-                {n:"Tulum", url:"https://images.unsplash.com/photo-1504131534-110081d1211e?w=600"}
+                {n:"Maldivas", tag:"EXCLUSIVO", url:"https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800"},
+                {n:"Dubái", tag:"LUJO", url:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800"},
+                {n:"Santorini", tag:"ROMÁNTICO", url:"https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800"},
+                {n:"Nueva York", tag:"BUSINESS", url:"https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800"},
+                {n:"Tokio", tag:"CULTURA", url:"https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800"},
+                {n:"París", tag:"PREMIUM", url:"https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800"}
             ]
         };
-        /* ========================================================= */
     </script>
 
     <style>
-        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; background-color: #ffffff; }
-        .bg-navy { background-color: #001f3f !important; }
-        .text-gold { color: #D4AF37 !important; }
-        .bg-gold { background-color: #D4AF37 !important; }
-        #hero-section { 
-            background-size: cover; 
-            background-position: center; 
-            position: relative;
-        }
-        #hero-section::before {
-            content: ""; position: absolute; inset: 0; background: rgba(0,31,63,0.7);
-        }
-        .dest-card { transition: all 0.3s ease; border: 1px solid #f1f1f1; background: white; }
-        .dest-card:hover { transform: translateY(-5px); border-color: #D4AF37; box-shadow: 0 10px 15px rgba(0,0,0,0.1); }
-        .img-box { height: 200px; overflow: hidden; background: #eee; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
+        :root { --gold: #C5A059; --dark: #0a0a0a; }
+        body { background-color: var(--dark); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        /* Animación de entrada */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-hero { animation: fadeIn 1.2s ease-out forwards; }
+
+        /* Estilo Luxury */
+        .glass-nav { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+        .hero-title { font-size: clamp(3rem, 10vw, 8rem); line-height: 0.9; letter-spacing: -2px; }
+        
+        .gold-gradient { background: linear-gradient(90deg, #C5A059, #F9F295, #C5A059); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Cards Dinámicas */
+        .dest-card { position: relative; height: 600px; overflow: hidden; border-radius: 4px; transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+        .dest-card img { height: 100%; width: 100%; object-fit: cover; filter: brightness(0.7) grayscale(0.3); transition: all 0.8s ease; }
+        .dest-card:hover img { transform: scale(1.05); filter: brightness(0.9) grayscale(0); }
+        .dest-card:hover { box-shadow: 0 30px 60px rgba(0,0,0,0.5); transform: translateY(-10px); }
+        
+        .card-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 40px; background: linear-gradient(transparent, rgba(0,0,0,0.9)); }
+        
+        /* Botón Custom */
+        .cta-btn { position: relative; border: 1px solid var(--gold); padding: 15px 40px; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; font-weight: 900; overflow: hidden; transition: 0.4s; }
+        .cta-btn:hover { background: var(--gold); color: black; box-shadow: 0 0 20px rgba(197, 160, 89, 0.4); }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <nav class="bg-navy p-4 sticky top-0 z-50 shadow-xl border-b border-gold/10">
+    <nav class="fixed w-full z-50 glass-nav px-6 py-4">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-white text-xl tracking-[0.3em] font-bold uppercase">COSTA <span class="text-gold">AZUL</span></h1>
-            <div class="hidden md:flex space-x-6 text-[10px] uppercase tracking-widest text-white">
-                <a href="#inicio" class="hover:text-gold transition">Inicio</a>
-                <a href="#catalogo" class="hover:text-gold transition">Catálogo</a>
-                <a href="#corporativo" class="hover:text-gold transition">Corporativo</a>
+            <div class="text-2xl font-black tracking-tighter">
+                <script>document.write(CONFIG.nombre)</script> <span class="gold-gradient italic"><script>document.write(CONFIG.apellido)</script></span>
             </div>
-            <a id="btn-wa" href="#" target="_blank" class="bg-gold text-navy px-5 py-2 text-[10px] font-bold uppercase rounded hover:bg-white transition">WhatsApp</a>
+            <a id="nav-wa" href="#" target="_blank" class="text-[10px] font-bold tracking-widest border-b border-gold pb-1 hover:text-gold transition">WHATSAPP</a>
         </div>
     </nav>
 
-    <header id="hero-section" class="h-[75vh] flex items-center justify-center text-center text-white px-6">
-        <div class="relative z-10 max-w-4xl">
-            <h2 class="text-4xl md:text-6xl font-light uppercase tracking-tighter italic mb-6 leading-tight">Tu Pasaporte a la Excelencia Turística</h2>
-            <p class="text-sm md:text-base font-light leading-relaxed mb-10 opacity-90 max-w-2xl mx-auto">Diseñamos experiencias a medida bajo la curaduría de COSTA AZUL COMPANY.</p>
-            <a href="#catalogo" class="bg-gold text-navy px-10 py-3.5 text-[10px] font-bold uppercase tracking-widest hover:bg-white transition">Ver Catálogo</a>
+    <header class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        <div id="hero-img" class="absolute inset-0 z-0 scale-110" style="background-size: cover; background-position: center;"></div>
+        <div class="absolute inset-0 bg-black/60 z-10"></div>
+        
+        <div class="relative z-20 text-center px-4 animate-hero">
+            <span class="text-gold tracking-[10px] text-[10px] uppercase mb-6 block font-bold">OPERADORA TURÍSTICA ELITE</span>
+            <h1 class="hero-title mb-10">EXPLORAR<br><span class="italic font-light">SIN LÍMITES</span></h1>
+            <div class="flex justify-center gap-6">
+                <a href="#experiencias" class="cta-btn">Ver Portafolio</a>
+            </div>
         </div>
     </header>
 
-    <section id="catalogo" class="py-24 bg-gray-50 px-6">
-        <div class="container mx-auto">
-            <h3 class="text-center text-3xl text-navy uppercase tracking-[0.2em] italic font-light mb-16 underline decoration-gold underline-offset-8">Destinos Seleccionados</h3>
-            <div id="grid-destinos" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                </div>
+    <section id="experiencias" class="py-32 px-6">
+        <div class="container mx-auto mb-20 flex items-end justify-between border-b border-white/10 pb-10">
+            <div>
+                <h2 class="text-6xl font-light italic">Experiencias</h2>
+                <h2 class="text-6xl font-bold -mt-4 uppercase gold-gradient">Curadas</h2>
+            </div>
+            <div class="hidden md:block max-w-sm text-[11px] uppercase tracking-widest leading-loose opacity-40 text-right">
+                Logística de alta precisión y servicios exclusivos para viajeros que exigen la excelencia en cada coordenada del mundo.
+            </div>
+        </div>
+
+        <div id="grid-destinos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+            </div>
+    </section>
+
+    <section class="py-32 bg-[#0d0d0d]">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div class="space-y-10">
+                <h3 class="text-5xl uppercase font-black leading-none">B2B <br><span class="italic font-light text-gold">Solutions</span></h3>
+                <p class="text-sm opacity-50 font-light leading-relaxed max-w-md">
+                    Transformamos los viajes corporativos en herramientas de crecimiento. Soporte global 24/7, gestión de eventos masivos y optimización de recursos empresariales bajo el sello de Costa Azul.
+                </p>
+                <a id="btn-corp" href="#" target="_blank" class="cta-btn inline-block">Agendar Consultoría</a>
+            </div>
+            <div class="relative h-[500px]">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1000" class="w-full h-full object-cover filter grayscale opacity-40 hover:opacity-100 transition duration-1000">
+            </div>
         </div>
     </section>
 
-    <section id="corporativo" class="py-20 bg-white">
-        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12 max-w-5xl">
-            <div class="md:w-1/2 h-80 rounded-2xl overflow-hidden shadow-xl">
-                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800" class="w-full h-full object-cover grayscale">
-            </div>
-            <div class="md:w-1/2">
-                <h3 class="text-2xl text-navy uppercase tracking-widest italic mb-6">Servicios Corporativos</h3>
-                <p class="text-xs text-gray-500 leading-loose mb-8">Soluciones logísticas de alta precisión para viajes de negocios y convenciones internacionales.</p>
-                <a id="btn-wa-corp" href="#" target="_blank" class="border-2 border-navy text-navy px-8 py-3 text-[10px] font-bold uppercase hover:bg-navy hover:text-white transition">Consultar B2B</a>
-            </div>
+    <footer class="py-20 bg-black text-center">
+        <div class="mb-12 opacity-10 text-[15vw] font-black leading-none pointer-events-none select-none uppercase">COSTA AZUL</div>
+        <div class="flex flex-col items-center gap-6">
+            <div class="h-px w-20 bg-gold"></div>
+            <p class="text-[9px] tracking-[5px] uppercase font-bold opacity-60">© 2026 COSTA AZUL COMPANY | GLOBAL OPERATIONS</p>
         </div>
-    </section>
-
-    <footer class="bg-navy py-16 text-center border-t border-white/5">
-        <p class="text-white opacity-40 text-[10px] uppercase tracking-[0.5em] italic mb-4">COSTA AZUL COMPANY</p>
-        <p class="text-white opacity-20 text-[8px] tracking-widest italic uppercase">© 2026 Todos los derechos reservados</p>
     </footer>
 
     <script>
-        // Aplicar CONFIG
-        const finalLink = CONFIG.linkWhatsapp;
-        document.getElementById('hero-section').style.backgroundImage = "url('" + CONFIG.imagenHero + "')";
-        document.getElementById('btn-wa').href = finalLink;
-        document.getElementById('btn-wa-corp').href = finalLink;
+        // Configuración de Datos
+        document.getElementById('hero-img').style.backgroundImage = `url('${CONFIG.heroImg}')`;
+        document.getElementById('nav-wa').href = CONFIG.contacto;
+        document.getElementById('btn-corp').href = CONFIG.contacto;
 
         const grid = document.getElementById('grid-destinos');
         CONFIG.destinos.forEach(dest => {
             grid.innerHTML += `
-                <div class="dest-card rounded-xl overflow-hidden shadow-sm">
-                    <div class="img-box">
-                        <img src="${dest.url}" alt="${dest.n}" onerror="this.src='https://via.placeholder.com/400x300?text=Imagen+No+Disponible'">
-                    </div>
-                    <div class="p-6 text-center">
-                        <h6 class="text-xs font-bold text-navy uppercase mb-4 tracking-widest">${dest.n}</h6>
-                        <a href="${finalLink}" target="_blank" class="block bg-navy text-white text-[9px] py-3 font-bold uppercase rounded-lg hover:bg-gold hover:text-navy transition duration-300">Solicitar Cotización</a>
+                <div class="dest-card group cursor-pointer">
+                    <img src="${dest.url}" alt="${dest.n}">
+                    <div class="card-overlay">
+                        <span class="text-gold text-[9px] font-black tracking-[4px] mb-2 block">${dest.tag}</span>
+                        <h4 class="text-4xl font-bold uppercase mb-6 tracking-tighter">${dest.n}</h4>
+                        <a href="${CONFIG.contacto}" target="_blank" class="inline-block border-b border-white py-2 text-[10px] font-black uppercase tracking-widest group-hover:border-gold group-hover:text-gold transition">Solicitar Itinerario</a>
                     </div>
                 </div>
             `;
+        });
+
+        // Parallax simple en Hero
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            document.getElementById('hero-img').style.transform = `translateY(${scroll * 0.5}px) scale(1.1)`;
         });
     </script>
 </body>
