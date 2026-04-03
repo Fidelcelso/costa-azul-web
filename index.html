@@ -3,204 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Costa Azul Company | Experiencias de Viaje</title>
+    <title>Costa Azul Company | Operadora de Viajes</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* PALETA COSTA AZUL (PASTEL) */
         :root {
-            --azul-claro: #E0F2F1; /* Azul pastel muy suave */
-            --azul-fuerte: #4F97A3; /* Azul oceánico para acentos */
-            --arena: #FAF9F6;      /* Blanco hueso / arena */
-            --dorado: #D4AF37;
+            --azul-pastel: #B2EBF2;
+            --azul-mar: #00838F;
+            --arena: #FAF9F6;
         }
 
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: var(--arena); 
-            color: #333; 
-            margin: 0; padding: 0;
-        }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--arena); margin: 0; }
 
-        /* NAVEGACIÓN REAL */
+        /* BARRA DE NAVEGACIÓN */
         nav { 
             background: white; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
-            position: fixed; top: 0; width: 100%; z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+            position: fixed; top: 0; width: 100%; z-index: 9999;
         }
 
-        .dropdown:hover .dropdown-menu { display: block; }
-        .dropdown-menu { 
-            display: none; position: absolute; background: white; 
-            min-width: 200px; box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            border-top: 3px solid var(--azul-fuerte);
+        /* ESTILO DE LOS MENÚS DESPLEGABLES */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+            z-index: 10000;
+            border-top: 4px solid var(--azul-mar);
         }
-        .dropdown-menu a { 
-            display: block; padding: 12px 20px; font-size: 12px; 
-            color: #555; text-transform: uppercase; border-bottom: 1px solid #eee;
+        .dropdown:hover .dropdown-content { display: block; }
+        
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-bottom: 1px solid #f1f1f1;
         }
-        .dropdown-menu a:hover { background: var(--azul-claro); color: var(--azul-fuerte); }
+        .dropdown-content a:hover { background-color: var(--azul-pastel); color: var(--azul-mar); }
 
-        /* SECCIONES VISIBLES/OCULTAS */
-        .page { display: none; padding-top: 100px; min-height: 100vh; }
-        .active { display: block; animation: fadeEffect 0.5s; }
+        /* SECCIONES */
+        .page-section { display: none; padding-top: 120px; min-height: 100vh; }
+        .active { display: block; }
 
-        @keyframes fadeEffect { from {opacity: 0;} to {opacity: 1;} }
-
-        /* HERO / BIENVENIDO */
-        .hero { 
-            height: 80vh; background: linear-gradient(rgba(224, 242, 241, 0.7), rgba(224, 242, 241, 0.7)), 
-            url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600');
+        /* HERO INICIO */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(178, 235, 242, 0.4), rgba(178, 235, 242, 0.4)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center;
         }
 
-        /* BOTONES */
-        .btn-wa { background-color: var(--azul-fuerte); color: white; padding: 12px 24px; border-radius: 4px; font-weight: 700; transition: 0.3s; }
-        .btn-wa:hover { background-color: #3a7a85; }
+        .btn-wa { background: var(--azul-mar); color: white; padding: 12px 25px; font-weight: 900; border-radius: 5px; }
 
         /* GRID DE DESTINOS */
-        .grid-destinos { 
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); 
-            gap: 20px; padding: 40px; 
+        .dest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px; padding: 40px;
         }
-        .card { 
-            background: white; border-radius: 8px; overflow: hidden; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); border: 1px solid #e0f2f1;
-            transition: transform 0.3s;
+        .dest-card {
+            background: white; border-radius: 10px; overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s;
+            cursor: pointer; border: 1px solid #e0f2f1;
         }
-        .card:hover { transform: translateY(-5px); }
-        .card img { width: 100%; height: 150px; object-fit: cover; background: #eee; }
-        .card-body { padding: 15px; text-align: center; }
+        .dest-card:hover { transform: translateY(-10px); border-color: var(--azul-mar); }
+        .dest-card img { width: 100%; height: 160px; object-fit: cover; }
+        .dest-card h4 { padding: 15px; font-size: 12px; font-weight: 700; text-align: center; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-    <nav class="flex justify-between items-center px-10 py-4">
-        <div class="text-xl font-black text-gray-800 tracking-tighter cursor-pointer" onclick="navigate('inicio')">
-            COSTA AZUL <span style="color: var(--azul-fuerte)">COMPANY</span>
+    <nav class="flex justify-between items-center px-10 py-5">
+        <div class="text-2xl font-black tracking-tighter cursor-pointer" onclick="showSection('inicio')">
+            COSTA AZUL <span style="color: var(--azul-mar)">COMPANY</span>
         </div>
 
-        <div class="flex items-center space-x-8 text-[11px] font-bold uppercase tracking-widest">
-            <a href="#" onclick="navigate('inicio')" class="hover:text-cyan-600">Inicio</a>
+        <div class="hidden md:flex space-x-8 items-center text-[11px] font-bold uppercase tracking-widest">
+            <button onclick="showSection('inicio')" class="hover:text-cyan-700">Inicio</button>
             
-            <div class="dropdown relative">
-                <a href="#" class="hover:text-cyan-600">Servicios ▾</a>
-                <div class="dropdown-menu">
-                    <a href="#" onclick="navigate('mision')">Misión</a>
-                    <a href="#" onclick="navigate('vision')">Visión</a>
-                    <a href="#" onclick="navigate('compromiso')">Compromiso</a>
+            <div class="dropdown">
+                <button class="hover:text-cyan-700 uppercase">Servicios ▾</button>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0)" onclick="showSection('mision')">Misión</a>
+                    <a href="javascript:void(0)" onclick="showSection('vision')">Visión</a>
+                    <a href="javascript:void(0)" onclick="showSection('compromiso')">Compromiso</a>
                 </div>
             </div>
 
-            <div class="dropdown relative">
-                <a href="#" class="hover:text-cyan-600">Catálogo ▾</a>
-                <div class="dropdown-menu">
-                    <a href="#" onclick="navigate('nacionales')">Nacionales (25)</a>
-                    <a href="#" onclick="navigate('internacionales')">Internacionales (25)</a>
+            <div class="dropdown">
+                <button class="hover:text-cyan-700 uppercase">Catálogo ▾</button>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0)" onclick="showSection('nacionales')">Nacionales (25)</a>
+                    <a href="javascript:void(0)" onclick="showSection('internacionales')">Internacionales (25)</a>
                 </div>
             </div>
 
-            <a href="#" onclick="navigate('eventos')" class="hover:text-cyan-600">Eventos</a>
+            <button onclick="showSection('eventos')" class="hover:text-cyan-700">Eventos</button>
         </div>
 
         <a href="https://w.app/costaazul" target="_blank" class="btn-wa text-[10px]">WHATSAPP</a>
     </nav>
 
-    <div id="inicio" class="page active">
+    <div id="inicio" class="page-section active">
         <div class="hero">
-            <h1 class="text-7xl font-black text-gray-800 mb-4 tracking-tighter">BIENVENIDO</h1>
-            <p class="text-xl italic text-gray-600 tracking-[8px] uppercase">Tu pasaporte a la excelencia</p>
+            <h1 class="text-6xl md:text-8xl font-black text-white drop-shadow-lg mb-4">BIENVENIDO</h1>
+            <p class="text-xl md:text-2xl text-cyan-900 font-bold tracking-[10px] uppercase">Tu pasaporte a la excelencia</p>
         </div>
     </div>
 
-    <div id="mision" class="page container mx-auto text-center px-10">
-        <h2 class="text-5xl font-black text-[#4F97A3] mb-10 italic">NUESTRA MISIÓN</h2>
-        <p class="text-3xl font-light leading-relaxed max-w-4xl mx-auto">Transformar cada viaje en una experiencia de vida inigualable, superando las expectativas con calidez y precisión.</p>
+    <div id="mision" class="page-section container mx-auto text-center px-6">
+        <h2 class="text-5xl font-black text-cyan-800 mb-8 italic uppercase">Nuestra Misión</h2>
+        <p class="text-3xl font-light leading-relaxed max-w-4xl mx-auto italic text-gray-700">"Transformar cada viaje en una experiencia de vida inigualable, superando las expectativas con calidez y precisión."</p>
     </div>
 
-    <div id="vision" class="page container mx-auto text-center px-10">
-        <h2 class="text-5xl font-black text-[#4F97A3] mb-10 italic">NUESTRA VISIÓN</h2>
-        <p class="text-3xl font-light leading-relaxed max-w-4xl mx-auto">Ser la operadora líder reconocida por la innovación y la exclusividad en cada rincón del mundo.</p>
+    <div id="vision" class="page-section container mx-auto text-center px-6">
+        <h2 class="text-5xl font-black text-cyan-800 mb-8 italic uppercase">Nuestra Visión</h2>
+        <p class="text-3xl font-light leading-relaxed max-w-4xl mx-auto italic text-gray-700">"Ser la operadora líder reconocida por la innovación y la exclusividad en cada rincón del mundo."</p>
     </div>
 
-    <div id="compromiso" class="page container mx-auto px-10">
-        <h2 class="text-5xl font-black text-center text-[#4F97A3] mb-16 italic">NUESTRO COMPROMISO</h2>
-        <div class="grid md:grid-cols-3 gap-10 text-center">
-            <div class="bg-white p-10 border-b-4 border-[#4F97A3]">
-                <h3 class="font-bold mb-4 uppercase">CALIDAD</h3>
-                <p class="text-sm opacity-70">Proveedores certificados globalmente.</p>
+    <div id="compromiso" class="page-section container mx-auto text-center px-6">
+        <h2 class="text-5xl font-black text-cyan-800 mb-8 italic uppercase">Compromiso</h2>
+        <div class="grid md:grid-cols-3 gap-8 mt-12">
+            <div class="bg-white p-10 rounded-xl shadow-sm border-t-8 border-cyan-600">
+                <h3 class="font-bold mb-4">CALIDAD</h3>
+                <p class="text-sm text-gray-500 italic">Proveedores certificados globalmente.</p>
             </div>
-            <div class="bg-white p-10 border-b-4 border-[#4F97A3]">
-                <h3 class="font-bold mb-4 uppercase">SERVICIO</h3>
-                <p class="text-sm opacity-70">Atención personalizada las 24 horas.</p>
+            <div class="bg-white p-10 rounded-xl shadow-sm border-t-8 border-cyan-600">
+                <h3 class="font-bold mb-4">ATENCIÓN</h3>
+                <p class="text-sm text-gray-500 italic">Soporte personalizado 24/7.</p>
             </div>
-            <div class="bg-white p-10 border-b-4 border-[#4F97A3]">
-                <h3 class="font-bold mb-4 uppercase">CONFIANZA</h3>
-                <p class="text-sm opacity-70">Transparencia en cada itinerario.</p>
+            <div class="bg-white p-10 rounded-xl shadow-sm border-t-8 border-cyan-600">
+                <h3 class="font-bold mb-4">CONFIANZA</h3>
+                <p class="text-sm text-gray-500 italic">Transparencia absoluta en cada costo.</p>
             </div>
         </div>
     </div>
 
-    <div id="nacionales" class="page">
-        <h2 class="text-center text-4xl font-black mb-10 uppercase tracking-widest">Destinos <span style="color: var(--azul-fuerte)">Nacionales</span></h2>
-        <div id="nac-list" class="grid-destinos"></div>
+    <div id="nacionales" class="page-section">
+        <h2 class="text-center text-4xl font-black text-cyan-900 mb-10 uppercase tracking-widest">Destinos <span class="text-cyan-600">Nacionales</span></h2>
+        <div id="nac-container" class="dest-grid"></div>
     </div>
 
-    <div id="internacionales" class="page">
-        <h2 class="text-center text-4xl font-black mb-10 uppercase tracking-widest">Destinos <span style="color: var(--azul-fuerte)">Internacionales</span></h2>
-        <div id="int-list" class="grid-destinos"></div>
+    <div id="internacionales" class="page-section">
+        <h2 class="text-center text-4xl font-black text-cyan-900 mb-10 uppercase tracking-widest">Destinos <span class="text-cyan-600">Internacionales</span></h2>
+        <div id="int-container" class="dest-grid"></div>
     </div>
 
-    <div id="eventos" class="page container mx-auto px-10 text-center">
-        <h2 class="text-6xl font-black text-[#4F97A3] mb-16 italic">EVENTOS EXCLUSIVOS</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="card p-10 cursor-pointer" onclick="window.open('https://w.app/costaazul')">
+    <div id="eventos" class="page-section container mx-auto text-center px-6">
+        <h2 class="text-6xl font-black text-cyan-800 mb-16 italic uppercase">Eventos Exclusivos</h2>
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="dest-card p-10" onclick="window.open('https://w.app/costaazul')">
                 <h3 class="text-2xl font-bold">Lunas de Miel</h3>
             </div>
-            <div class="card p-10 cursor-pointer" onclick="window.open('https://w.app/costaazul')">
+            <div class="dest-card p-10" onclick="window.open('https://w.app/costaazul')">
                 <h3 class="text-2xl font-bold">XV Años</h3>
             </div>
-            <div class="card p-10 cursor-pointer" onclick="window.open('https://w.app/costaazul')">
+            <div class="dest-card p-10" onclick="window.open('https://w.app/costaazul')">
                 <h3 class="text-2xl font-bold">Graduaciones</h3>
             </div>
         </div>
     </div>
 
     <script>
-        // Lógica de Navegación Real
-        function navigate(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
+        // FUNCIÓN CLAVE PARA LA NAVEGACIÓN
+        function showSection(id) {
+            // Oculta todas las secciones
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(s => s.classList.remove('active'));
+            
+            // Muestra la sección seleccionada
+            const target = document.getElementById(id);
+            if(target) {
+                target.classList.add('active');
+            }
+            
+            // Regresa el scroll al inicio
             window.scrollTo(0,0);
         }
 
-        // Generar Destinos Nacionales (25)
-        const nacs = ["Cancún", "Los Cabos", "Riviera Maya", "Puerto Vallarta", "Tulum", "Oaxaca", "Mérida", "San Miguel", "Mazatlán", "Huatulco", "Guadalajara", "Monterrey", "Puebla", "Querétaro", "Veracruz", "Chiapas", "Bacalar", "Isla Mujeres", "Cozumel", "Sayulita", "Holbox", "Valle de Bravo", "Taxco", "Zihuatanejo", "Manzanillo"];
-        const nacContainer = document.getElementById('nac-list');
+        // GENERAR 25 DESTINOS NACIONALES
+        const nacs = ["Cancún", "Los Cabos", "Riviera Maya", "Tulum", "Oaxaca", "Mérida", "Puerto Vallarta", "San Miguel", "Mazatlán", "Huatulco", "Guadalajara", "Monterrey", "Puebla", "Querétaro", "Veracruz", "Chiapas", "Bacalar", "Isla Mujeres", "Cozumel", "Sayulita", "Holbox", "Valle de Bravo", "Taxco", "Zihuatanejo", "Manzanillo"];
+        const nacGrid = document.getElementById('nac-container');
         nacs.forEach((n, i) => {
-            nacContainer.innerHTML += `
-                <div class="card" onclick="window.open('https://w.app/costaazul')">
-                    <img src="https://picsum.photos/seed/${i+1}/400/300" alt="${n}">
-                    <div class="card-body">
-                        <h4 class="font-bold uppercase text-xs">${n}</h4>
-                        <p class="text-[9px] text-cyan-700 mt-2">MÁS INFO ➔</p>
-                    </div>
+            nacGrid.innerHTML += `
+                <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
+                    <img src="https://picsum.photos/seed/mex${i}/400/300" alt="${n}">
+                    <h4>${n}</h4>
                 </div>`;
         });
 
-        // Generar Destinos Internacionales (25)
+        // GENERAR 25 DESTINOS INTERNACIONALES
         const ints = ["París", "Madrid", "Nueva York", "Tokio", "Londres", "Roma", "Dubái", "Santorini", "Bali", "Barcelona", "Ámsterdam", "Pekín", "Sídney", "Berlín", "Estambul", "Río de Janeiro", "Toronto", "Seúl", "Cairo", "Praga", "Viena", "Lisboa", "Zúrich", "Bangkok", "Buenos Aires"];
-        const intContainer = document.getElementById('int-list');
+        const intGrid = document.getElementById('int-container');
         ints.forEach((n, i) => {
-            intContainer.innerHTML += `
-                <div class="card" onclick="window.open('https://w.app/costaazul')">
-                    <img src="https://picsum.photos/seed/${i+30}/400/300" alt="${n}">
-                    <div class="card-body">
-                        <h4 class="font-bold uppercase text-xs">${n}</h4>
-                        <p class="text-[9px] text-cyan-700 mt-2">MÁS INFO ➔</p>
-                    </div>
+            intGrid.innerHTML += `
+                <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
+                    <img src="https://picsum.photos/seed/world${i}/400/300" alt="${n}">
+                    <h4>${n}</h4>
                 </div>`;
         });
     </script>
