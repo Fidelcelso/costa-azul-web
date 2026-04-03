@@ -3,120 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Costa Azul | Operadora de Viajes</title>
+    <title>Costa Azul Company | Operadora de Viajes</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script>
+        /* =========================================================
+           PANEL DE CONTROL - EDITA AQUÍ ABAJO PARA CAMBIAR TU WEB
+           =========================================================
+        */
+        const CONFIG = {
+            nombreEmpresa: "COSTA AZUL COMPANY",
+            whatsapp: "521", // Pon tu número aquí
+            fraseHero: "Tu Pasaporte a la Excelencia Turística",
+            descripcionHero: "En Costa Azul, no solo vendemos destinos; diseñamos experiencias a medida. Somos una operadora de viajes integral dedicada a la curaduría de momentos inolvidables, combinando logística de alta precisión con el lujo y la calidez que cada viajero merece.",
+            
+            // IMÁGENES DEL CATÁLOGO (Puedes cambiar las IDs de Unsplash)
+            destinos: [
+                {n:"Cancún", id:"1506059696013-cc4f1c408c4a"},
+                {n:"Los Cabos", id:"1534063635-f9380029b13b"},
+                {n:"Riviera Maya", id:"1540979388789-66795b6c3fa4"},
+                {n:"Vallarta", id:"1554350341-a3f8551ef417"},
+                {n:"Tulum", id:"1504131534-110081d1211e"},
+                {n:"Oaxaca", id:"1541031318-ef4f482d0245"},
+                {n:"Mérida", id:"1512813195-c9c4c7c6d30a"},
+                {n:"San Miguel", id:"1565151524-87003f6f347f"},
+                {n:"Mazatlán", id:"1586524316402-1fa991809655"},
+                {n:"Huatulco", id:"1622329606275-c967520e7409"},
+                {n:"París", id:"1502602898657-3e91760cbb34"},
+                {n:"Madrid", id:"1539037116277-4db20889f2d4"},
+                {n:"Nueva York", id:"1496442226666-8d4d0e62e6e9"},
+                {n:"Tokio", id:"1540959733332-eab4deabeeaf"},
+                {n:"Londres", id: "1513635269971-096d13603417"}
+            ]
+        };
+        /* ========================================================= */
+    </script>
+
     <style>
-        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
-        .bg-navy { background-color: #001f3f; }
-        .text-gold { color: #D4AF37; }
-        .bg-gold { background-color: #D4AF37; }
+        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; background-color: #ffffff; }
+        .bg-navy { background-color: #001f3f !important; }
+        .text-gold { color: #D4AF37 !important; }
+        .bg-gold { background-color: #D4AF37 !important; }
         .hero-bg { 
-            background: linear-gradient(rgba(0,31,63,0.7), rgba(0,31,63,0.7)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80'); 
+            background: linear-gradient(rgba(0,31,63,0.75), rgba(0,31,63,0.75)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80'); 
             background-size: cover; background-position: center; 
         }
-        .dest-card { transition: transform 0.3s ease; border: 1px solid #eee; overflow: hidden; }
-        .dest-card:hover { transform: translateY(-5px); border-color: #D4AF37; }
-        .img-h { height: 160px; background-color: #001f3f; overflow: hidden; }
+        .dest-card { transition: all 0.3s ease; border: 1px solid #f1f1f1; }
+        .dest-card:hover { transform: translateY(-5px); border-color: #D4AF37; box-shadow: 0 10px 20px -10px rgba(0,0,0,0.1); }
+        .img-box { height: 160px; background-color: #001f3f; overflow: hidden; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="antialiased text-gray-800">
 
-    <nav class="bg-navy p-4 sticky top-0 z-50 shadow-2xl">
+    <nav class="bg-navy p-4 sticky top-0 z-50 shadow-xl">
         <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-white text-xl tracking-[0.3em] font-bold uppercase">COSTA <span class="text-gold">AZUL</span></h1>
-            <div class="hidden md:flex space-x-6 text-[10px] uppercase tracking-widest text-white">
+            <h1 class="text-white text-xl tracking-[0.3em] font-bold uppercase">
+                <script>document.write(CONFIG.nombreEmpresa.split(' ')[0])</script> 
+                <span class="text-gold"><script>document.write(CONFIG.nombreEmpresa.split(' ').slice(1).join(' '))</script></span>
+            </h1>
+            <div class="hidden md:flex space-x-6 text-[10px] uppercase tracking-widest text-white font-semibold">
                 <a href="#inicio" class="hover:text-gold transition">Inicio</a>
                 <a href="#catalogo" class="hover:text-gold transition">Catálogo</a>
                 <a href="#eventos" class="hover:text-gold transition">Eventos</a>
                 <a href="#corporativo" class="hover:text-gold transition">Corporativo</a>
                 <a href="#conocenos" class="hover:text-gold transition">Conócenos</a>
             </div>
-            <a href="https://wa.me/521" target="_blank" class="bg-gold text-navy px-4 py-1 text-[10px] font-bold uppercase rounded hover:bg-white transition">WhatsApp</a>
+            <a id="btn-wa" href="#" class="bg-gold text-navy px-5 py-2 text-[10px] font-bold uppercase rounded hover:bg-white transition">WhatsApp</a>
         </div>
     </nav>
 
-    <header id="inicio" class="hero-bg h-[70vh] flex items-center justify-center text-center text-white px-6">
+    <header id="inicio" class="hero-bg h-[75vh] flex items-center justify-center text-center text-white px-6">
         <div class="max-w-4xl">
-            <h2 class="text-4xl md:text-5xl font-light uppercase tracking-tighter italic mb-6">Tu Pasaporte a la Excelencia Turística</h2>
-            <p class="text-xs md:text-sm leading-relaxed mb-8 opacity-90 max-w-2xl mx-auto">
-                En Costa Azul, no solo vendemos destinos; diseñamos experiencias a medida. Somos una operadora de viajes integral dedicada a la curaduría de momentos inolvidables, combinando logística de alta precisión con el lujo y la calidez que cada viajero merece. Desde escapadas paradisíacas hasta misiones corporativas, somos el puente entre tus sueños y la realidad.
-            </p>
-            <a href="#catalogo" class="inline-block bg-gold text-navy px-8 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-white transition">Explorar Catálogo</a>
+            <h2 id="hero-title" class="text-4xl md:text-6xl font-light uppercase tracking-tighter italic mb-6 leading-tight"></h2>
+            <p id="hero-desc" class="text-sm md:text-base font-light leading-relaxed mb-10 opacity-90 max-w-2xl mx-auto"></p>
+            <a href="#catalogo" class="bg-gold text-navy px-10 py-3.5 text-[10px] font-bold uppercase tracking-widest hover:bg-white transition shadow-lg">Ver Catálogo</a>
         </div>
     </header>
 
-    <section id="catalogo" class="py-20 bg-gray-50 px-6">
+    <section id="catalogo" class="py-24 bg-gray-50 px-6">
         <div class="container mx-auto">
-            <h3 class="text-center text-navy text-2xl uppercase tracking-[0.3em] mb-16 italic underline decoration-gold underline-offset-8">Destinos 2026</h3>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
-                <script>
-                    const destinos = [
-                        {n:"Cancún", id:"1506059696013-cc4f1c408c4a"}, {n:"Los Cabos", id:"1534063635-f9380029b13b"}, {n:"Riviera Maya", id:"1540979388789-66795b6c3fa4"}, {n:"Vallarta", id:"1554350341-a3f8551ef417"}, {n:"Tulum", id:"1504131534-110081d1211e"},
-                        {n:"Oaxaca", id:"1541031318-ef4f482d0245"}, {n:"Mérida", id:"1512813195-c9c4c7c6d30a"}, {n:"San Miguel", id:"1565151524-87003f6f347f"}, {n:"Mazatlán", id:"1586524316402-1fa991809655"}, {n:"Huatulco", id:"1622329606275-c967520e7409"},
-                        {n:"París", id:"1502602898657-3e91760cbb34"}, {n:"Madrid", id:"1539037116277-4db20889f2d4"}, {n:"Nueva York", id:"1496442226666-8d4d0e62e6e9"}, {n:"Tokio", id:"1540959733332-eab4deabeeaf"}, {n:"Londres", id: "1513635269971-096d13603417"}
-                    ];
-                    destinos.forEach(dest => {
-                        document.write(`
-                            <div class="dest-card bg-white p-2 text-center rounded shadow-sm">
-                                <div class="img-h mb-3">
-                                    <img src="https://images.unsplash.com/photo-${dest.id}?auto=format&fit=crop&w=400&q=60" class="w-full h-full object-cover">
-                                </div>
-                                <h6 class="text-[9px] font-bold text-navy uppercase mb-3">${dest.n}</h6>
-                                <a href="https://wa.me/521" target="_blank" class="block bg-gold text-navy text-[8px] py-2 font-bold uppercase hover:bg-navy hover:text-white transition">Cotizar</a>
-                            </div>
-                        `);
-                    });
-                </script>
+            <h3 class="text-center text-3xl text-navy uppercase tracking-[0.2em] italic font-light mb-16 underline decoration-gold underline-offset-8">Destinos 2026</h3>
+            <div id="grid-destinos" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                </div>
+        </div>
+    </section>
+
+    <section id="eventos" class="py-24 bg-white px-6">
+        <div class="container mx-auto">
+            <h3 class="text-center text-2xl text-navy uppercase tracking-widest mb-16 italic font-light">Celebraciones Especiales</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="relative h-[450px] overflow-hidden rounded-xl shadow-2xl group">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 flex items-end p-10 text-white"><h4 class="text-2xl font-bold uppercase italic tracking-widest">Luna de Miel</h4></div>
+                </div>
+                <div class="relative h-[450px] overflow-hidden rounded-xl shadow-2xl group">
+                    <img src="https://images.unsplash.com/photo-1544033527-b192daee1f5b?auto=format&fit=crop&w=800" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 flex items-end p-10 text-white"><h4 class="text-2xl font-bold uppercase italic tracking-widest">XV Años</h4></div>
+                </div>
+                <div class="relative h-[450px] overflow-hidden rounded-xl shadow-2xl group">
+                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=800" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/40 flex items-end p-10 text-white"><h4 class="text-2xl font-bold uppercase italic tracking-widest">Familiar</h4></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="eventos" class="py-20 bg-white px-6">
-        <div class="container mx-auto grid md:grid-cols-3 gap-6">
-            <div class="relative h-80 overflow-hidden rounded shadow-xl">
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40 flex items-end p-8 text-white"><h4 class="text-xl font-bold uppercase italic tracking-widest">Luna de Miel</h4></div>
-            </div>
-            <div class="relative h-80 overflow-hidden rounded shadow-xl">
-                <img src="https://images.unsplash.com/photo-1544033527-b192daee1f5b?auto=format&fit=crop&w=600" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40 flex items-end p-8 text-white"><h4 class="text-xl font-bold uppercase italic tracking-widest">XV Años</h4></div>
-            </div>
-            <div class="relative h-80 overflow-hidden rounded shadow-xl">
-                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=600" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/40 flex items-end p-8 text-white"><h4 class="text-xl font-bold uppercase italic tracking-widest">Familiar</h4></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="corporativo" class="py-20 bg-gray-50 px-6 border-t border-b border-gray-100">
-        <div class="container mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2 rounded overflow-hidden shadow-2xl h-80">
-                <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800" class="w-full h-full object-cover grayscale">
+    <section id="corporativo" class="py-24 bg-gray-50 border-y border-gray-100">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-16 max-w-6xl">
+            <div class="md:w-1/2 rounded-2xl overflow-hidden shadow-2xl h-96">
+                <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=1000" class="w-full h-full object-cover grayscale">
             </div>
             <div class="md:w-1/2">
-                <h3 class="text-2xl text-navy uppercase font-light italic mb-6 tracking-widest">Corporativo</h3>
-                <p class="text-xs text-gray-500 leading-relaxed mb-8">Optimizamos la logística de su empresa con soporte B2B especializado y facturación inmediata.</p>
-                <a href="https://wa.me/521" class="border-2 border-navy text-navy px-8 py-3 text-[10px] font-bold uppercase hover:bg-navy hover:text-white transition">Consultar</a>
+                <h3 class="text-3xl text-navy uppercase font-light italic mb-6 tracking-widest">Servicios B2B</h3>
+                <p class="text-sm text-gray-500 leading-loose border-l-4 border-gold pl-6">Optimizamos la logística de su empresa. Desde convenciones hasta viajes de incentivo, garantizamos ejecución impecable y facturación inmediata.</p>
+                <a href="#" class="mt-8 inline-block bg-navy text-white px-10 py-4 text-[10px] font-bold uppercase tracking-widest rounded hover:bg-gold transition">Agendar Consultoría</a>
             </div>
         </div>
     </section>
 
-    <section id="conocenos" class="py-20 bg-white px-6 text-center border-b border-gray-100">
-        <div class="container mx-auto max-w-5xl">
-            <h3 class="text-2xl text-navy uppercase tracking-[0.4em] mb-12 font-light">Nuestra Identidad</h3>
-            <div class="grid md:grid-cols-3 gap-8 text-navy">
-                <div class="p-8 bg-gray-50 border-t border-gold rounded"><h4 class="font-bold text-xs uppercase mb-4 text-gold">Misión</h4><p class="text-[10px] text-gray-500 italic leading-relaxed">"Ofrecer experiencias de viaje únicas y personalizadas."</p></div>
-                <div class="p-8 bg-gray-50 border-t border-gold rounded"><h4 class="font-bold text-xs uppercase mb-4 text-gold">Visión</h4><p class="text-[10px] text-gray-500 italic leading-relaxed">"Ser la operadora líder en el mercado de lujo."</p></div>
-                <div class="p-8 bg-gray-50 border-t border-gold rounded"><h4 class="font-bold text-xs uppercase mb-4 text-gold">Compromiso</h4><p class="text-[10px] text-gray-500 italic leading-relaxed">"Garantizar seguridad y transparencia en cada detalle."</p></div>
+    <section id="conocenos" class="py-24 bg-white text-center">
+        <div class="container mx-auto px-6">
+            <h3 class="text-2xl text-navy uppercase tracking-[0.4em] mb-20 font-light">Nuestra Identidad</h3>
+            <div class="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+                <div class="p-8 bg-gray-50 rounded-lg border-t-2 border-gold shadow-sm">
+                    <h4 class="text-gold font-bold text-xs uppercase mb-4 tracking-widest">Misión</h4>
+                    <p class="text-[11px] text-gray-500 italic leading-relaxed">"Ofrecer experiencias de viaje únicas transformando cada destino en un recuerdo imborrable."</p>
+                </div>
+                <div class="p-8 bg-gray-50 rounded-lg border-t-2 border-gold shadow-sm">
+                    <h4 class="text-gold font-bold text-xs uppercase mb-4 tracking-widest">Visión</h4>
+                    <p class="text-[11px] text-gray-600 italic leading-relaxed">"Ser la operadora líder en el mercado de lujo, siendo referentes de innovación."</p>
+                </div>
+                <div class="p-8 bg-gray-50 rounded-lg border-t-2 border-gold shadow-sm">
+                    <h4 class="text-gold font-bold text-xs uppercase mb-4 tracking-widest">Compromiso</h4>
+                    <p class="text-[11px] text-gray-600 italic leading-relaxed">"Garantizar seguridad, transparencia y calidad superior en cada detalle."</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-navy py-12 text-center border-t border-white/5">
-        <p class="text-gold text-[10px] uppercase tracking-[0.4em] font-bold mb-3 italic">COSTA AZUL COMPANY</p>
-        <p class="text-white opacity-40 text-[9px] uppercase tracking-widest italic">© 2026 COSTA AZUL COMPANY</p>
+    <footer class="bg-navy py-16 text-center border-t border-white/5">
+        <p id="footer-brand" class="text-white opacity-40 text-[10px] uppercase tracking-[0.5em] italic mb-4"></p>
+        <p id="footer-copy" class="text-white opacity-30 text-[8px] uppercase tracking-widest italic"></p>
     </footer>
 
+    <script>
+        // Cargar datos de CONFIG
+        document.getElementById('btn-wa').href = "https://wa.me/" + CONFIG.whatsapp;
+        document.getElementById('hero-title').innerText = CONFIG.fraseHero;
+        document.getElementById('hero-desc').innerText = CONFIG.descripcionHero;
+        document.getElementById('footer-brand').innerText = CONFIG.nombreEmpresa;
+        document.getElementById('footer-copy').innerText = "© 2026 " + CONFIG.nombreEmpresa;
+
+        // Generar Catálogo
+        const grid = document.getElementById('grid-destinos');
+        CONFIG.destinos.forEach(dest => {
+            grid.innerHTML += `
+                <div class="dest-card bg-white p-2 text-center rounded-lg shadow-sm">
+                    <div class="img-box mb-3 rounded">
+                        <img src="https://images.unsplash.com/photo-${dest.id}?auto=format&fit=crop&w=400&q=60" class="w-full h-full object-cover">
+                    </div>
+                    <h6 class="text-[9px] font-bold text-navy uppercase mb-3 tracking-widest">${dest.n}</h6>
+                    <a href="https://wa.me/${CONFIG.whatsapp}" target="_blank" class="block bg-gold text-navy text-[8px] py-2 font-bold uppercase rounded hover:bg-navy hover:text-white transition">Cotizar</a>
+                </div>
+            `;
+        });
+    </script>
 </body>
 </html>
