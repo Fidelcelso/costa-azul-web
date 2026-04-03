@@ -23,7 +23,6 @@
             position: fixed; top: 0; width: 100%; z-index: 9999;
         }
 
-        /* ESTILO DE LOS MENÚS DESPLEGABLES */
         .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
             display: none;
@@ -48,11 +47,9 @@
         }
         .dropdown-content a:hover { background-color: var(--azul-pastel); color: var(--azul-mar); }
 
-        /* SECCIONES */
         .page-section { display: none; padding-top: 120px; min-height: 100vh; }
         .active { display: block; }
 
-        /* HERO INICIO */
         .hero {
             height: 70vh;
             background: linear-gradient(rgba(178, 235, 242, 0.4), rgba(178, 235, 242, 0.4)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600');
@@ -63,7 +60,6 @@
 
         .btn-wa { background: var(--azul-mar); color: white; padding: 12px 25px; font-weight: 900; border-radius: 5px; }
 
-        /* GRID DE DESTINOS */
         .dest-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -73,18 +69,26 @@
             background: white; border-radius: 10px; overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s;
             cursor: pointer; border: 1px solid #e0f2f1;
+            display: flex; flex-direction: column;
         }
         .dest-card:hover { transform: translateY(-10px); border-color: var(--azul-mar); }
         .dest-card img { width: 100%; height: 160px; object-fit: cover; }
         .dest-card h4 { padding: 15px 15px 5px 15px; font-size: 12px; font-weight: 700; text-align: center; text-transform: uppercase; }
         
-        /* Botón de cotizar en card */
-        .btn-cotizar { 
-            display: block; background: var(--azul-mar); color: white; 
-            font-size: 10px; font-weight: 900; text-align: center; 
-            padding: 10px; margin: 10px; border-radius: 4px;
+        /* BOTÓN DE COTIZAR REQUERIDO */
+        .btn-cotizar-card {
+            background-color: var(--azul-mar);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin: 10px 15px 15px 15px;
+            border-radius: 5px;
+            font-size: 10px;
+            font-weight: 900;
             text-transform: uppercase;
+            transition: 0.3s;
         }
+        .btn-cotizar-card:hover { background-color: #006064; }
     </style>
 </head>
 <body>
@@ -96,7 +100,6 @@
 
         <div class="hidden md:flex space-x-8 items-center text-[11px] font-bold uppercase tracking-widest">
             <button onclick="showSection('inicio')" class="hover:text-cyan-700">Inicio</button>
-            
             <div class="dropdown">
                 <button class="hover:text-cyan-700 uppercase">Servicios ▾</button>
                 <div class="dropdown-content">
@@ -105,7 +108,6 @@
                     <a href="javascript:void(0)" onclick="showSection('compromiso')">Compromiso</a>
                 </div>
             </div>
-
             <div class="dropdown">
                 <button class="hover:text-cyan-700 uppercase">Catálogo ▾</button>
                 <div class="dropdown-content">
@@ -113,10 +115,8 @@
                     <a href="javascript:void(0)" onclick="showSection('internacionales')">Internacionales (25)</a>
                 </div>
             </div>
-
             <button onclick="showSection('eventos')" class="hover:text-cyan-700">Eventos</button>
         </div>
-
         <a href="https://w.app/costaazul" target="_blank" class="btn-wa text-[10px]">WHATSAPP</a>
     </nav>
 
@@ -129,59 +129,50 @@
 
     <div id="mision" class="page-section container mx-auto text-center px-6">
         <h2 class="text-5xl font-black text-cyan-800 mb-8 italic uppercase">Nuestra Misión</h2>
-        <p class="text-3xl font-light leading-relaxed max-w-4xl mx-auto italic text-gray-700">"Transformar cada viaje en una experiencia de vida inigualable, superando las expectativas con calidez y precisión."</p>
+        <p class="text-3xl font-light leading-relaxed max-w-4xl mx-auto italic text-gray-700">"Transformar cada viaje en una experiencia de vida inigualable."</p>
     </div>
 
     <div id="vision" class="page-section container mx-auto text-center px-6">
         <h2 class="text-5xl font-black text-cyan-800 mb-8 italic uppercase">Nuestra Visión</h2>
-        <p class="text-3xl font-light leading-relaxed max-w-4xl mx-auto italic text-gray-700">"Ser la operadora líder reconocida por la innovación y la exclusividad en cada rincón del mundo."</p>
+        <p class="text-3xl font-light leading-relaxed max-w-4xl mx-auto italic text-gray-700">"Ser la operadora líder reconocida por la innovación."</p>
     </div>
 
     <div id="compromiso" class="page-section container mx-auto text-center px-6">
         <h2 class="text-5xl font-black text-cyan-800 mb-8 italic uppercase">Compromiso</h2>
         <div class="grid md:grid-cols-3 gap-8 mt-12">
-            <div class="bg-white p-10 rounded-xl shadow-sm border-t-8 border-cyan-600">
-                <h3 class="font-bold mb-4">CALIDAD</h3>
-                <p class="text-sm text-gray-500 italic">Proveedores certificados globalmente.</p>
-            </div>
-            <div class="bg-white p-10 rounded-xl shadow-sm border-t-8 border-cyan-600">
-                <h3 class="font-bold mb-4">ATENCIÓN</h3>
-                <p class="text-sm text-gray-500 italic">Soporte personalizado 24/7.</p>
-            </div>
-            <div class="bg-white p-10 rounded-xl shadow-sm border-t-8 border-cyan-600">
-                <h3 class="font-bold mb-4">CONFIANZA</h3>
-                <p class="text-sm text-gray-500 italic">Transparencia absoluta en cada costo.</p>
-            </div>
+            <div class="bg-white p-10 rounded-xl border-t-8 border-cyan-600"><h3>CALIDAD</h3></div>
+            <div class="bg-white p-10 rounded-xl border-t-8 border-cyan-600"><h3>ATENCIÓN</h3></div>
+            <div class="bg-white p-10 rounded-xl border-t-8 border-cyan-600"><h3>CONFIANZA</h3></div>
         </div>
     </div>
 
     <div id="nacionales" class="page-section">
-        <h2 class="text-center text-4xl font-black text-cyan-900 mb-10 uppercase tracking-widest">Destinos <span class="text-cyan-600">Nacionales</span></h2>
+        <h2 class="text-center text-4xl font-black text-cyan-900 mb-10 uppercase tracking-widest">Destinos Nacionales</h2>
         <div id="nac-container" class="dest-grid"></div>
     </div>
 
     <div id="internacionales" class="page-section">
-        <h2 class="text-center text-4xl font-black text-cyan-900 mb-10 uppercase tracking-widest">Destinos <span class="text-cyan-600">Internacionales</span></h2>
+        <h2 class="text-center text-4xl font-black text-cyan-900 mb-10 uppercase tracking-widest">Destinos Internacionales</h2>
         <div id="int-container" class="dest-grid"></div>
     </div>
 
     <div id="eventos" class="page-section container mx-auto text-center px-6">
         <h2 class="text-6xl font-black text-cyan-800 mb-16 italic uppercase">Eventos Exclusivos</h2>
         <div class="grid md:grid-cols-3 gap-10">
-            <div class="dest-card pb-5" onclick="window.open('https://w.app/costaazul')">
-                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=400" alt="Lunas de Miel">
-                <h3 class="text-2xl font-bold mt-4">Lunas de Miel</h3>
-                <span class="btn-cotizar">Cotizar Evento</span>
+            <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600" alt="Boda">
+                <h3 class="text-2xl font-bold py-4 uppercase">Lunas de Miel</h3>
+                <div class="btn-cotizar-card">Cotizar Evento</div>
             </div>
-            <div class="dest-card pb-5" onclick="window.open('https://w.app/costaazul')">
-                <img src="https://images.unsplash.com/photo-1541250848049-b4f71413cc30?q=80&w=400" alt="XV Años">
-                <h3 class="text-2xl font-bold mt-4">XV Años</h3>
-                <span class="btn-cotizar">Cotizar Evento</span>
+            <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600" alt="Fiesta">
+                <h3 class="text-2xl font-bold py-4 uppercase">XV Años</h3>
+                <div class="btn-cotizar-card">Cotizar Evento</div>
             </div>
-            <div class="dest-card pb-5" onclick="window.open('https://w.app/costaazul')">
-                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=400" alt="Graduaciones">
-                <h3 class="text-2xl font-bold mt-4">Graduaciones</h3>
-                <span class="btn-cotizar">Cotizar Evento</span>
+            <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
+                <img src="https://images.unsplash.com/photo-1541339907198-e08759dfc185?q=80&w=600" alt="Graduación">
+                <h3 class="text-2xl font-bold py-4 uppercase">Graduaciones</h3>
+                <div class="btn-cotizar-card">Cotizar Evento</div>
             </div>
         </div>
     </div>
@@ -195,6 +186,7 @@
             window.scrollTo(0,0);
         }
 
+        // NACIONALES CON BOTÓN
         const nacs = ["Cancún", "Los Cabos", "Riviera Maya", "Tulum", "Oaxaca", "Mérida", "Puerto Vallarta", "San Miguel", "Mazatlán", "Huatulco", "Guadalajara", "Monterrey", "Puebla", "Querétaro", "Veracruz", "Chiapas", "Bacalar", "Isla Mujeres", "Cozumel", "Sayulita", "Holbox", "Valle de Bravo", "Taxco", "Zihuatanejo", "Manzanillo"];
         const nacGrid = document.getElementById('nac-container');
         nacs.forEach((n, i) => {
@@ -202,10 +194,11 @@
                 <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
                     <img src="https://picsum.photos/seed/mex${i}/400/300" alt="${n}">
                     <h4>${n}</h4>
-                    <span class="btn-cotizar">Cotizar Ahora</span>
+                    <div class="btn-cotizar-card">Cotizar Ahora</div>
                 </div>`;
         });
 
+        // INTERNACIONALES CON BOTÓN
         const ints = ["París", "Madrid", "Nueva York", "Tokio", "Londres", "Roma", "Dubái", "Santorini", "Bali", "Barcelona", "Ámsterdam", "Pekín", "Sídney", "Berlín", "Estambul", "Río de Janeiro", "Toronto", "Seúl", "Cairo", "Praga", "Viena", "Lisboa", "Zúrich", "Bangkok", "Buenos Aires"];
         const intGrid = document.getElementById('int-container');
         ints.forEach((n, i) => {
@@ -213,7 +206,7 @@
                 <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
                     <img src="https://picsum.photos/seed/world${i}/400/300" alt="${n}">
                     <h4>${n}</h4>
-                    <span class="btn-cotizar">Cotizar Ahora</span>
+                    <div class="btn-cotizar-card">Cotizar Ahora</div>
                 </div>`;
         });
     </script>
