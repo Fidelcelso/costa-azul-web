@@ -76,7 +76,15 @@
         }
         .dest-card:hover { transform: translateY(-10px); border-color: var(--azul-mar); }
         .dest-card img { width: 100%; height: 160px; object-fit: cover; }
-        .dest-card h4 { padding: 15px; font-size: 12px; font-weight: 700; text-align: center; text-transform: uppercase; }
+        .dest-card h4 { padding: 15px 15px 5px 15px; font-size: 12px; font-weight: 700; text-align: center; text-transform: uppercase; }
+        
+        /* Botón de cotizar en card */
+        .btn-cotizar { 
+            display: block; background: var(--azul-mar); color: white; 
+            font-size: 10px; font-weight: 900; text-align: center; 
+            padding: 10px; margin: 10px; border-radius: 4px;
+            text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
@@ -160,36 +168,33 @@
     <div id="eventos" class="page-section container mx-auto text-center px-6">
         <h2 class="text-6xl font-black text-cyan-800 mb-16 italic uppercase">Eventos Exclusivos</h2>
         <div class="grid md:grid-cols-3 gap-10">
-            <div class="dest-card p-10" onclick="window.open('https://w.app/costaazul')">
-                <h3 class="text-2xl font-bold">Lunas de Miel</h3>
+            <div class="dest-card pb-5" onclick="window.open('https://w.app/costaazul')">
+                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=400" alt="Lunas de Miel">
+                <h3 class="text-2xl font-bold mt-4">Lunas de Miel</h3>
+                <span class="btn-cotizar">Cotizar Evento</span>
             </div>
-            <div class="dest-card p-10" onclick="window.open('https://w.app/costaazul')">
-                <h3 class="text-2xl font-bold">XV Años</h3>
+            <div class="dest-card pb-5" onclick="window.open('https://w.app/costaazul')">
+                <img src="https://images.unsplash.com/photo-1541250848049-b4f71413cc30?q=80&w=400" alt="XV Años">
+                <h3 class="text-2xl font-bold mt-4">XV Años</h3>
+                <span class="btn-cotizar">Cotizar Evento</span>
             </div>
-            <div class="dest-card p-10" onclick="window.open('https://w.app/costaazul')">
-                <h3 class="text-2xl font-bold">Graduaciones</h3>
+            <div class="dest-card pb-5" onclick="window.open('https://w.app/costaazul')">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=400" alt="Graduaciones">
+                <h3 class="text-2xl font-bold mt-4">Graduaciones</h3>
+                <span class="btn-cotizar">Cotizar Evento</span>
             </div>
         </div>
     </div>
 
     <script>
-        // FUNCIÓN CLAVE PARA LA NAVEGACIÓN
         function showSection(id) {
-            // Oculta todas las secciones
             const sections = document.querySelectorAll('.page-section');
             sections.forEach(s => s.classList.remove('active'));
-            
-            // Muestra la sección seleccionada
             const target = document.getElementById(id);
-            if(target) {
-                target.classList.add('active');
-            }
-            
-            // Regresa el scroll al inicio
+            if(target) { target.classList.add('active'); }
             window.scrollTo(0,0);
         }
 
-        // GENERAR 25 DESTINOS NACIONALES
         const nacs = ["Cancún", "Los Cabos", "Riviera Maya", "Tulum", "Oaxaca", "Mérida", "Puerto Vallarta", "San Miguel", "Mazatlán", "Huatulco", "Guadalajara", "Monterrey", "Puebla", "Querétaro", "Veracruz", "Chiapas", "Bacalar", "Isla Mujeres", "Cozumel", "Sayulita", "Holbox", "Valle de Bravo", "Taxco", "Zihuatanejo", "Manzanillo"];
         const nacGrid = document.getElementById('nac-container');
         nacs.forEach((n, i) => {
@@ -197,10 +202,10 @@
                 <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
                     <img src="https://picsum.photos/seed/mex${i}/400/300" alt="${n}">
                     <h4>${n}</h4>
+                    <span class="btn-cotizar">Cotizar Ahora</span>
                 </div>`;
         });
 
-        // GENERAR 25 DESTINOS INTERNACIONALES
         const ints = ["París", "Madrid", "Nueva York", "Tokio", "Londres", "Roma", "Dubái", "Santorini", "Bali", "Barcelona", "Ámsterdam", "Pekín", "Sídney", "Berlín", "Estambul", "Río de Janeiro", "Toronto", "Seúl", "Cairo", "Praga", "Viena", "Lisboa", "Zúrich", "Bangkok", "Buenos Aires"];
         const intGrid = document.getElementById('int-container');
         ints.forEach((n, i) => {
@@ -208,9 +213,9 @@
                 <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
                     <img src="https://picsum.photos/seed/world${i}/400/300" alt="${n}">
                     <h4>${n}</h4>
+                    <span class="btn-cotizar">Cotizar Ahora</span>
                 </div>`;
         });
     </script>
-
 </body>
 </html>
