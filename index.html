@@ -49,6 +49,14 @@
         .page-section { display: none; padding-top: 120px; min-height: 100vh; }
         .active { display: block; }
 
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(0, 131, 143, 0.4), rgba(0, 131, 143, 0.4)), url('https://images.unsplash.com/photo-1506929223349-4ec4284d19ca?q=80&w=1600');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center;
+        }
+
         .dest-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -61,7 +69,7 @@
             display: flex; flex-direction: column;
         }
         .dest-card:hover { transform: translateY(-10px); border-color: var(--azul-mar); }
-        .dest-card img { width: 100%; height: 160px; object-fit: cover; }
+        .dest-card img { width: 100%; height: 160px; object-fit: cover; background-color: #eee; }
         .dest-card h4 { padding: 15px 15px 5px 15px; font-size: 12px; font-weight: 700; text-align: center; text-transform: uppercase; }
         
         .btn-cotizar-card {
@@ -83,21 +91,57 @@
         <div class="text-2xl font-black tracking-tighter cursor-pointer" onclick="showSection('inicio')">
             COSTA AZUL <span style="color: var(--azul-mar)">COMPANY</span>
         </div>
+
         <div class="hidden md:flex space-x-8 items-center text-[11px] font-bold uppercase tracking-widest">
-            <button onclick="showSection('inicio')">Inicio</button>
-            <button onclick="showSection('internacionales')">Prueba París</button>
+            <button onclick="showSection('inicio')" class="hover:text-cyan-700">Inicio</button>
+            <div class="dropdown">
+                <button class="hover:text-cyan-700 uppercase">Catálogo ▾</button>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0)" onclick="showSection('nacionales')">Nacionales (25)</a>
+                    <a href="javascript:void(0)" onclick="showSection('internacionales')">Internacionales (25)</a>
+                </div>
+            </div>
+            <button onclick="showSection('eventos')" class="hover:text-cyan-700">Eventos</button>
         </div>
-        <a href="https://w.app/costaazul" target="_blank" class="btn-wa text-[10px] bg-[#00838F] text-white p-3 rounded">WHATSAPP</a>
+        <a href="https://w.app/costaazul" target="_blank" class="bg-[#00838F] text-white px-6 py-3 font-black rounded text-[10px]">WHATSAPP</a>
     </nav>
 
-    <div id="inicio" class="page-section active text-center">
-        <h1 class="text-4xl font-black mt-20">PRUEBA DE IMAGEN CARGADA</h1>
-        <p class="mt-4">Ve a la pestaña "Prueba París" o baja a Internacionales.</p>
+    <div id="inicio" class="page-section active">
+        <div class="hero">
+            <h1 class="text-6xl md:text-8xl font-black text-white drop-shadow-lg mb-4">BIENVENIDO</h1>
+            <p class="text-xl md:text-2xl text-white font-bold tracking-[10px] uppercase">Tu pasaporte a la excelencia</p>
+        </div>
+    </div>
+
+    <div id="nacionales" class="page-section">
+        <h2 class="text-center text-4xl font-black text-cyan-900 mb-10 uppercase tracking-widest">Destinos Nacionales</h2>
+        <div id="nac-container" class="dest-grid"></div>
     </div>
 
     <div id="internacionales" class="page-section">
-        <h2 class="text-center text-4xl font-black text-cyan-900 mb-10 uppercase">Destinos Internacionales</h2>
+        <h2 class="text-center text-4xl font-black text-cyan-900 mb-10 uppercase tracking-widest">Destinos Internacionales</h2>
         <div id="int-container" class="dest-grid"></div>
+    </div>
+
+    <div id="eventos" class="page-section container mx-auto text-center px-6">
+        <h2 class="text-6xl font-black text-cyan-800 mb-16 italic uppercase">Eventos Exclusivos</h2>
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=600" alt="Boda">
+                <h3 class="text-2xl font-bold py-4 uppercase">Lunas de Miel</h3>
+                <div class="btn-cotizar-card">Cotizar Evento</div>
+            </div>
+            <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600" alt="Fiesta">
+                <h3 class="text-2xl font-bold py-4 uppercase">XV Años</h3>
+                <div class="btn-cotizar-card">Cotizar Evento</div>
+            </div>
+            <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=600" alt="Graduación">
+                <h3 class="text-2xl font-bold py-4 uppercase">Graduaciones</h3>
+                <div class="btn-cotizar-card">Cotizar Evento</div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -108,21 +152,81 @@
             window.scrollTo(0,0);
         }
 
-        // --- PRUEBA CON TU URL ---
-        const ints = [
-            {
-                n: "París", 
-                img: "https://media.istockphoto.com/id/1665716741/photo/aerial-view-of-paris-france-overlooking-the-famous-eiffel-tower-sunrise-in-the.jpg?s=612x612&w=0&k=20&c=L_Q0_B7u_rLpG_8aK9-O_97v8_mC9L0v_H9e2N9oZ5U=" 
-            },
-            { n: "Madrid", img: "https://images.unsplash.com/photo-1539367628448-4bc5c96954c8?w=400" },
-            { n: "Tokio", img: "https://images.unsplash.com/photo-1503899036014-934d45d37651?w=400" }
+        // DICCIONARIO DE IMÁGENES NACIONALES (Links directos de Unsplash para mayor estabilidad)
+        const nacData = [
+            {n: "Cancún", img: "https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=500"},
+            {n: "Los Cabos", img: "https://images.unsplash.com/photo-1599812182395-ad2c02881903?w=500"},
+            {n: "Riviera Maya", img: "https://images.unsplash.com/photo-1564851287875-680453004381?w=500"},
+            {n: "Tulum", img: "https://images.unsplash.com/photo-1504730655501-24c39ac53f0e?w=500"},
+            {n: "Oaxaca", img: "https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?w=500"},
+            {n: "Mérida", img: "https://images.unsplash.com/photo-1582298538104-fe2e74c27f59?w=500"},
+            {n: "Puerto Vallarta", img: "https://images.unsplash.com/photo-1620389133044-59911e38959d?w=500"},
+            {n: "San Miguel de Allende", img: "https://images.unsplash.com/photo-1594142144898-757530c3330b?w=500"},
+            {n: "Mazatlán", img: "https://images.unsplash.com/photo-1618252876356-9d226a276020?w=500"},
+            {n: "Huatulco", img: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?w=500"},
+            {n: "Guadalajara", img: "https://images.unsplash.com/photo-1581404118049-fc49c81b5042?w=500"},
+            {n: "Monterrey", img: "https://images.unsplash.com/photo-1590740941865-c33595608226?w=500"},
+            {n: "Puebla", img: "https://images.unsplash.com/photo-1512813195391-452068926528?w=500"},
+            {n: "Querétaro", img: "https://images.unsplash.com/photo-1599814421115-4679261a840e?w=500"},
+            {n: "Veracruz", img: "https://images.unsplash.com/photo-1590728956973-10807b3b4f65?w=500"},
+            {n: "Chiapas", img: "https://images.unsplash.com/photo-1558231712-40e83ef80720?w=500"},
+            {n: "Bacalar", img: "https://images.unsplash.com/photo-1585464231153-90be5c7ed7d8?w=500"},
+            {n: "Isla Mujeres", img: "https://images.unsplash.com/photo-1571408821035-7788448ec628?w=500"},
+            {n: "Cozumel", img: "https://images.unsplash.com/photo-1533760881669-80db4d7b4c15?w=500"},
+            {n: "Sayulita", img: "https://images.unsplash.com/photo-1569335160351-789a71020297?w=500"},
+            {n: "Holbox", img: "https://images.unsplash.com/photo-1563286088-75b813e316a3?w=500"},
+            {n: "Valle de Bravo", img: "https://images.unsplash.com/photo-1512100353060-da1e503bc184?w=500"},
+            {n: "Taxco", img: "https://images.unsplash.com/photo-1503970391766-9799477ba729?w=500"},
+            {n: "Zihuatanejo", img: "https://images.unsplash.com/photo-1512100353060-da1e503bc184?w=500"},
+            {n: "Manzanillo", img: "https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?w=500"}
         ];
 
+        // DICCIONARIO DE IMÁGENES INTERNACIONALES (Incluye tu prueba de París)
+        const intData = [
+            {n: "París", img: "https://media.istockphoto.com/id/1498516775/photo/the-eiffel-tower-in-paris-france-at-sunset.jpg?s=2048x2048&w=is&k=20&c=RQ1Y8YiZTDCPcj2nDl6SeynXTM35MRdrHgvIirKEDUM="},
+            {n: "Madrid", img: "https://images.unsplash.com/photo-1539367628448-4bc5c96954c8?w=500"},
+            {n: "Nueva York", img: "https://images.unsplash.com/photo-1496442226664-8d4d08a26bab?w=500"},
+            {n: "Tokio", img: "https://images.unsplash.com/photo-1503899036014-934d45d37651?w=500"},
+            {n: "Londres", img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=500"},
+            {n: "Roma", img: "https://images.unsplash.com/photo-1552832230-c0197dd3ef1b?w=500"},
+            {n: "Dubái", img: "https://images.unsplash.com/photo-1512453973963-78d1983f2d2b?w=500"},
+            {n: "Santorini", img: "https://images.unsplash.com/photo-1469041146991-1193375e1f0b?w=500"},
+            {n: "Bali", img: "https://images.unsplash.com/photo-1537995503201-ee2899b20d7a?w=500"},
+            {n: "Barcelona", img: "https://images.unsplash.com/photo-1583422409516-29151246733b?w=500"},
+            {n: "Ámsterdam", img: "https://images.unsplash.com/photo-1534351590666-13cd48b473d2?w=500"},
+            {n: "Pekín", img: "https://images.unsplash.com/photo-1508050913919-45c118940081?w=500"},
+            {n: "Sídney", img: "https://images.unsplash.com/photo-1506973035872-a4ec16b848c2?w=500"},
+            {n: "Berlín", img: "https://images.unsplash.com/photo-1560969184-10fe87c9e097?w=500"},
+            {n: "Estambul", img: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=500"},
+            {n: "Río de Janeiro", img: "https://images.unsplash.com/photo-1483728642387-aa405456574a?w=500"},
+            {n: "Toronto", img: "https://images.unsplash.com/photo-1503192851959-10655d8a9f23?w=500"},
+            {n: "Seúl", img: "https://images.unsplash.com/photo-1538485399081-7d91df1936e2?w=500"},
+            {n: "Cairo", img: "https://images.unsplash.com/photo-1503177119565-f323040ead20?w=500"},
+            {n: "Praga", img: "https://images.unsplash.com/photo-1519677100203-ad5709b44c36?w=500"},
+            {n: "Viena", img: "https://images.unsplash.com/photo-1516550817120-218c0903f75c?w=500"},
+            {n: "Lisboa", img: "https://images.unsplash.com/photo-1535916793968-0d26a2393e27?w=500"},
+            {n: "Zúrich", img: "https://images.unsplash.com/photo-1515488764531-9e1eef05f0cb?w=500"},
+            {n: "Bangkok", img: "https://images.unsplash.com/photo-1528150177558-41256541a494?w=500"},
+            {n: "Buenos Aires", img: "https://images.unsplash.com/photo-1589909202802-12af981858ea?w=500"}
+        ];
+
+        // RENDERIZAR NACIONALES
+        const nacGrid = document.getElementById('nac-container');
+        nacData.forEach(dest => {
+            nacGrid.innerHTML += `
+                <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
+                    <img src="${dest.img}" alt="${dest.n}" onerror="this.src='https://placehold.co/400x300?text=Imagen+No+Disponible'">
+                    <h4>${dest.n}</h4>
+                    <div class="btn-cotizar-card">Cotizar Ahora</div>
+                </div>`;
+        });
+
+        // RENDERIZAR INTERNACIONALES
         const intGrid = document.getElementById('int-container');
-        ints.forEach(dest => {
+        intData.forEach(dest => {
             intGrid.innerHTML += `
                 <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
-                    <img src="${dest.img}" alt="${dest.n}">
+                    <img src="${dest.img}" alt="${dest.n}" onerror="this.src='https://placehold.co/400x300?text=Imagen+No+Disponible'">
                     <h4>${dest.n}</h4>
                     <div class="btn-cotizar-card">Cotizar Ahora</div>
                 </div>`;
