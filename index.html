@@ -16,6 +16,7 @@
 
         body { font-family: 'Montserrat', sans-serif; background-color: var(--arena); margin: 0; }
 
+        /* NAVEGACIÓN */
         nav { 
             background: white; 
             box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
@@ -51,7 +52,7 @@
 
         .hero {
             height: 70vh;
-            background: linear-gradient(rgba(0, 131, 143, 0.4), rgba(0, 131, 143, 0.4)), url('https://images.unsplash.com/photo-1506929223349-4ec4284d19ca?q=80&w=1600');
+            background: linear-gradient(rgba(178, 235, 242, 0.4), rgba(178, 235, 242, 0.4)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             text-align: center;
@@ -91,24 +92,52 @@
         <div class="text-2xl font-black tracking-tighter cursor-pointer" onclick="showSection('inicio')">
             COSTA AZUL <span style="color: var(--azul-mar)">COMPANY</span>
         </div>
+
         <div class="hidden md:flex space-x-8 items-center text-[11px] font-bold uppercase tracking-widest">
-            <button onclick="showSection('inicio')">Inicio</button>
+            <button onclick="showSection('inicio')" class="hover:text-cyan-700">Inicio</button>
             <div class="dropdown">
-                <button>Catálogo ▾</button>
+                <button class="hover:text-cyan-700 uppercase">Servicios ▾</button>
                 <div class="dropdown-content">
-                    <a href="#" onclick="showSection('nacionales')">Nacionales</a>
-                    <a href="#" onclick="showSection('internacionales')">Internacionales</a>
+                    <a href="javascript:void(0)" onclick="showSection('mision')">Misión</a>
+                    <a href="javascript:void(0)" onclick="showSection('vision')">Visión</a>
+                    <a href="javascript:void(0)" onclick="showSection('compromiso')">Compromiso</a>
                 </div>
             </div>
-            <button onclick="showSection('eventos')">Eventos</button>
+            <div class="dropdown">
+                <button class="hover:text-cyan-700 uppercase">Catálogo ▾</button>
+                <div class="dropdown-content">
+                    <a href="javascript:void(0)" onclick="showSection('nacionales')">Nacionales (25)</a>
+                    <a href="javascript:void(0)" onclick="showSection('internacionales')">Internacionales (25)</a>
+                </div>
+            </div>
+            <button onclick="showSection('eventos')" class="hover:text-cyan-700">Eventos</button>
         </div>
-        <a href="https://w.app/costaazul" target="_blank" class="bg-[#00838F] text-white px-4 py-2 rounded font-bold text-[10px]">WHATSAPP</a>
+        <a href="https://w.app/costaazul" target="_blank" class="bg-[#00838F] text-white px-6 py-3 font-black rounded text-[10px]">WHATSAPP</a>
     </nav>
 
     <div id="inicio" class="page-section active">
         <div class="hero">
             <h1 class="text-6xl md:text-8xl font-black text-white drop-shadow-lg mb-4">BIENVENIDO</h1>
-            <p class="text-xl md:text-2xl text-white font-bold tracking-[10px] uppercase">Tu pasaporte a la excelencia</p>
+            <p class="text-xl md:text-2xl text-cyan-900 font-bold tracking-[10px] uppercase">Tu pasaporte a la excelencia</p>
+        </div>
+    </div>
+
+    <div id="mision" class="page-section container mx-auto text-center px-6">
+        <h2 class="text-5xl font-black text-cyan-800 mb-8 italic uppercase">Nuestra Misión</h2>
+        <p class="text-3xl font-light leading-relaxed max-w-4xl mx-auto italic text-gray-700">"Transformar cada viaje en una experiencia de vida inigualable."</p>
+    </div>
+
+    <div id="vision" class="page-section container mx-auto text-center px-6">
+        <h2 class="text-5xl font-black text-cyan-800 mb-8 italic uppercase">Nuestra Visión</h2>
+        <p class="text-3xl font-light leading-relaxed max-w-4xl mx-auto italic text-gray-700">"Ser la operadora líder reconocida por la innovación."</p>
+    </div>
+
+    <div id="compromiso" class="page-section container mx-auto text-center px-6">
+        <h2 class="text-5xl font-black text-cyan-800 mb-8 italic uppercase">Compromiso</h2>
+        <div class="grid md:grid-cols-3 gap-8 mt-12 text-xl font-bold">
+            <div class="bg-white p-10 rounded-xl border-t-8 border-cyan-600 shadow-lg"><h3>CALIDAD</h3></div>
+            <div class="bg-white p-10 rounded-xl border-t-8 border-cyan-600 shadow-lg"><h3>ATENCIÓN</h3></div>
+            <div class="bg-white p-10 rounded-xl border-t-8 border-cyan-600 shadow-lg"><h3>CONFIANZA</h3></div>
         </div>
     </div>
 
@@ -131,7 +160,7 @@
                 <div class="btn-cotizar-card">Cotizar Evento</div>
             </div>
             <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
-                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=600" alt="Fiesta">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=600" alt="XV">
                 <h3 class="text-2xl font-bold py-4 uppercase">XV Años</h3>
                 <div class="btn-cotizar-card">Cotizar Evento</div>
             </div>
@@ -147,17 +176,15 @@
         function showSection(id) {
             const sections = document.querySelectorAll('.page-section');
             sections.forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
+            const target = document.getElementById(id);
+            if(target) target.classList.add('active');
             window.scrollTo(0,0);
         }
 
-        // --- NACIONALES CON BÚSQUEDA TEMÁTICA ---
         const nacs = ["Cancún", "Los Cabos", "Riviera Maya", "Tulum", "Oaxaca", "Mérida", "Puerto Vallarta", "San Miguel de Allende", "Mazatlán", "Huatulco", "Guadalajara", "Monterrey", "Puebla", "Querétaro", "Veracruz", "Chiapas", "Bacalar", "Isla Mujeres", "Cozumel", "Sayulita", "Holbox", "Valle de Bravo", "Taxco", "Zihuatanejo", "Manzanillo"];
-        
         const nacGrid = document.getElementById('nac-container');
-        nacs.forEach((n) => {
-            // Generamos una URL de Unsplash basada en el nombre del destino
-            const imgUrl = `https://source.unsplash.com/featured/400x300?mexico,${n.replace(/\s/g, '')}`;
+        nacs.forEach((n, i) => {
+            const imgUrl = `https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?w=400&sig=${i}`; // Foto real representativa
             nacGrid.innerHTML += `
                 <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
                     <img src="${imgUrl}" alt="${n}" onerror="this.src='https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?w=400'">
@@ -166,21 +193,13 @@
                 </div>`;
         });
 
-        // --- INTERNACIONALES CON TU PRUEBA DE PARÍS ---
         const ints = ["París", "Madrid", "Nueva York", "Tokio", "Londres", "Roma", "Dubái", "Santorini", "Bali", "Barcelona", "Ámsterdam", "Pekín", "Sídney", "Berlín", "Estambul", "Río de Janeiro", "Toronto", "Seúl", "Cairo", "Praga", "Viena", "Lisboa", "Zúrich", "Bangkok", "Buenos Aires"];
-        
         const intGrid = document.getElementById('int-container');
-        ints.forEach((n) => {
-            let imgUrl;
+        ints.forEach((n, i) => {
+            let imgUrl = (n === "París") 
+                ? "https://media.istockphoto.com/id/1498516775/photo/the-eiffel-tower-in-paris-france-at-sunset.jpg?s=2048x2048&w=is&k=20&c=RQ1Y8YiZTDCPcj2nDl6SeynXTM35MRdrHgvIirKEDUM="
+                : `https://images.unsplash.com/photo-1449034446853-66c86144b0ad?w=400&sig=${i+30}`;
             
-            // Si es París, usamos tu link específico de iStock
-            if(n === "París") {
-                imgUrl = "https://media.istockphoto.com/id/1498516775/photo/the-eiffel-tower-in-paris-france-at-sunset.jpg?s=2048x2048&w=is&k=20&c=RQ1Y8YiZTDCPcj2nDl6SeynXTM35MRdrHgvIirKEDUM=";
-            } else {
-                // Para los demás, buscamos por ciudad
-                imgUrl = `https://source.unsplash.com/featured/400x300?city,${n.replace(/\s/g, '')}`;
-            }
-
             intGrid.innerHTML += `
                 <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
                     <img src="${imgUrl}" alt="${n}" onerror="this.src='https://images.unsplash.com/photo-1449034446853-66c86144b0ad?w=400'">
