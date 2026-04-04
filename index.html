@@ -51,7 +51,7 @@
 
         .hero {
             height: 70vh;
-            background: linear-gradient(rgba(178, 235, 242, 0.4), rgba(178, 235, 242, 0.4)), url('https://images.unsplash.com/photo-1506929199175-609017f17744?q=80&w=1600');
+            background: linear-gradient(rgba(0, 131, 143, 0.3), rgba(0, 131, 143, 0.3)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             text-align: center;
@@ -86,7 +86,6 @@
             text-transform: uppercase;
             transition: 0.3s;
         }
-        .btn-cotizar-card:hover { background-color: #006064; }
     </style>
 </head>
 <body>
@@ -120,8 +119,8 @@
 
     <div id="inicio" class="page-section active">
         <div class="hero">
-            <h1 class="text-6xl md:text-8xl font-black text-white drop-shadow-lg mb-4 text-center">BIENVENIDO</h1>
-            <p class="text-xl md:text-2xl text-cyan-900 font-bold tracking-[10px] uppercase text-center">Tu pasaporte a la excelencia</p>
+            <h1 class="text-6xl md:text-8xl font-black text-white drop-shadow-lg mb-4">BIENVENIDO</h1>
+            <p class="text-xl md:text-2xl text-white font-bold tracking-[10px] uppercase">Tu pasaporte a la excelencia</p>
         </div>
     </div>
 
@@ -158,12 +157,12 @@
         <h2 class="text-6xl font-black text-cyan-800 mb-16 italic uppercase">Eventos Exclusivos</h2>
         <div class="grid md:grid-cols-3 gap-10">
             <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
-                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=600" alt="Boda">
+                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=600" alt="Boda">
                 <h3 class="text-2xl font-bold py-4 uppercase">Lunas de Miel</h3>
                 <div class="btn-cotizar-card">Cotizar Evento</div>
             </div>
             <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
-                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600" alt="Fiesta">
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=600" alt="XV">
                 <h3 class="text-2xl font-bold py-4 uppercase">XV Años</h3>
                 <div class="btn-cotizar-card">Cotizar Evento</div>
             </div>
@@ -184,47 +183,48 @@
             window.scrollTo(0,0);
         }
 
-        // DATOS NACIONALES CON IMÁGENES REALES
-        const nacData = [
-            {n:"Cancún", id:"1512813588311-54942b9816bd"}, {n:"Los Cabos", id:"1599812182395-ad2c02881903"}, {n:"Riviera Maya", id:"1552074284-5e88ef1aef18"},
-            {n:"Tulum", id:"1504730655501-24c39ac53f0e"}, {n:"Oaxaca", id:"1518105779142-d975f22f1b0a"}, {n:"Mérida", id:"1582298538104-fe2e74c27f59"},
-            {n:"Puerto Vallarta", id:"1620389133044-59911e38959d"}, {n:"San Miguel", id:"1594142144898-757530c3330b"}, {n:"Mazatlán", id:"1618252876356-9d226a276020"},
-            {n:"Huatulco", id:"1585464231875-d9ef1f5ad396"}, {n:"Guadalajara", id:"1581404118049-fc49c81b5042"}, {n:"Monterrey", id:"1590740941865-c33595608226"},
-            {n:"Puebla", id:"1512813195391-452068926528"}, {n:"Querétaro", id:"1599814421115-4679261a840e"}, {n:"Veracruz", id:"1590728956973-10807b3b4f65"},
-            {n:"Chiapas", id:"1558231712-40e83ef80720"}, {n:"Bacalar", id:"1585464231153-90be5c7ed7d8"}, {n:"Isla Mujeres", id:"1571408821035-7788448ec628"},
-            {n:"Cozumel", id:"1533760881669-80db4d7b4c15"}, {n:"Sayulita", id:"1569335160351-789a71020297"}, {n:"Holbox", id:"1563286088-75b813e316a3"},
-            {n:"Valle de Bravo", id:"1594142442484-757530c3330b"}, {n:"Taxco", id:"1503970391766-9799477ba729"}, {n:"Zihuatanejo", id:"1512100353060-da1e503bc184"},
-            {n:"Manzanillo", id:"1585464231875-d9ef1f5ad396"}
+        // --- MAPEO DE IMÁGENES REALES (UNSPLASH) ---
+        
+        const nacs = [
+            {n:"Cancún", img:"1506461883276-cf7ae2036a7e"}, {n:"Los Cabos", img:"1599812182395-ad2c02881903"}, {n:"Riviera Maya", img:"1552074284-5e88ef1aef18"},
+            {n:"Tulum", img:"1504730655501-24c39ac53f0e"}, {n:"Oaxaca", img:"1518105779142-d975f22f1b0a"}, {n:"Mérida", img:"1582298538104-fe2e74c27f59"},
+            {n:"Puerto Vallarta", img:"1620389133044-59911e38959d"}, {n:"San Miguel", img:"1594142144898-757530c3330b"}, {n:"Mazatlán", img:"1618252876356-9d226a276020"},
+            {n:"Huatulco", img:"1585464231875-d9ef1f5ad396"}, {n:"Guadalajara", img:"1581404118049-fc49c81b5042"}, {n:"Monterrey", img:"1590740941865-c33595608226"},
+            {n:"Puebla", img:"1512813195391-452068926528"}, {n:"Querétaro", img:"1599814421115-4679261a840e"}, {n:"Veracruz", img:"1590728956973-10807b3b4f65"},
+            {n:"Chiapas", img:"1558231712-40e83ef80720"}, {n:"Bacalar", img:"1585464231153-90be5c7ed7d8"}, {n:"Isla Mujeres", img:"1571408821035-7788448ec628"},
+            {n:"Cozumel", img:"1533760881669-80db4d7b4c15"}, {n:"Sayulita", img:"1569335160351-789a71020297"}, {n:"Holbox", img:"1563286088-75b813e316a3"},
+            {n:"Valle de Bravo", img:"1594142442484-757530c3330b"}, {n:"Taxco", img:"1503970391766-9799477ba729"}, {n:"Zihuatanejo", img:"1512100353060-da1e503bc184"},
+            {n:"Manzanillo", img:"1585464231875-d9ef1f5ad396"}
         ];
 
+        const ints = [
+            {n:"París", img:"1502600141285-ed3478960a33"}, {n:"Madrid", img:"1539367628448-4bc5c96954c8"}, {n:"Nueva York", img:"1496442226664-8d4d08a26bab"},
+            {n:"Tokio", img:"1503899036014-934d45d37651"}, {n:"Londres", img:"1513635269975-59663e0ac1ad"}, {n:"Roma", img:"1552832230-c0197dd3ef1b"},
+            {n:"Dubái", img:"1512453973963-78d1983f2d2b"}, {n:"Santorini", img:"1469041146991-1193375e1f0b"}, {n:"Bali", img:"1537995503201-ee2899b20d7a"},
+            {n:"Barcelona", img:"1583422409516-29151246733b"}, {n:"Ámsterdam", img:"1534351590666-13cd48b473d2"}, {n:"Pekín", img:"1508050913919-45c118940081"},
+            {n:"Sídney", img:"1506973035872-a4ec16b848c2"}, {n:"Berlín", img:"1560969184-10fe87c9e097"}, {n:"Estambul", img:"1524231757912-21f4fe3a7200"},
+            {n:"Río de Janeiro", img:"1483728642387-aa405456574a"}, {n:"Toronto", img:"1503192851959-10655d8a9f23"}, {n:"Seúl", img:"1538485399081-7d91df1936e2"},
+            {n:"Cairo", img:"1503177119565-f323040ead20"}, {n:"Praga", img:"1519677100203-ad5709b44c36"}, {n:"Viena", img:"1516550817120-218c0903f75c"},
+            {n:"Lisboa", img:"1535916793968-0d26a2393e27"}, {n:"Zúrich", img:"1515488764531-9e1eef05f0cb"}, {n:"Bangkok", img:"1528150177558-41256541a494"},
+            {n:"Buenos Aires", img:"1589909202802-12af981858ea"}
+        ];
+
+        // Renderizado
         const nacGrid = document.getElementById('nac-container');
-        nacData.forEach(dest => {
+        nacs.forEach(dest => {
             nacGrid.innerHTML += `
                 <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
-                    <img src="https://images.unsplash.com/photo-${dest.id}?auto=format&fit=crop&w=400&q=80" alt="${dest.n}">
+                    <img src="https://images.unsplash.com/photo-${dest.img}?auto=format&fit=crop&w=400&q=80" alt="${dest.n}">
                     <h4>${dest.n}</h4>
                     <div class="btn-cotizar-card">Cotizar Ahora</div>
                 </div>`;
         });
 
-        // DATOS INTERNACIONALES CON IMÁGENES REALES
-        const intData = [
-            {n:"París", id:"1502600141285-ed3478960a33"}, {n:"Madrid", id:"1539367628448-4bc5c96954c8"}, {n:"Nueva York", id:"1496442226664-8d4d08a26bab"},
-            {n:"Tokio", id:"1503899036014-934d45d37651"}, {n:"Londres", id:"1513635269975-59663e0ac1ad"}, {n:"Roma", id:"1552832230-c0197dd3ef1b"},
-            {n:"Dubái", id:"1512453973963-78d1983f2d2b"}, {n:"Santorini", id:"1469041146991-1193375e1f0b"}, {n:"Bali", id:"1537995503201-ee2899b20d7a"},
-            {n:"Barcelona", id:"1583422409516-29151246733b"}, {n:"Ámsterdam", id:"1534351590666-13cd48b473d2"}, {n:"Pekín", id:"1508050913919-45c118940081"},
-            {n:"Sídney", id:"1506973035872-a4ec16b848c2"}, {n:"Berlín", id:"1560969184-10fe87c9e097"}, {n:"Estambul", id:"1524231757912-21f4fe3a7200"},
-            {n:"Río de Janeiro", id:"1483728642387-aa405456574a"}, {n:"Toronto", id:"1503192851959-10655d8a9f23"}, {n:"Seúl", id:"1538485399081-7d91df1936e2"},
-            {n:"Cairo", id:"1503177119565-f323040ead20"}, {n:"Praga", id:"1519677100203-ad5709b44c36"}, {n:"Viena", id:"1516550817120-218c0903f75c"},
-            {n:"Lisboa", id:"1535916793968-0d26a2393e27"}, {n:"Zúrich", id:"1515488764531-9e1eef05f0cb"}, {n:"Bangkok", id:"1528150177558-41256541a494"},
-            {n:"Buenos Aires", id:"1589909202802-12af981858ea"}
-        ];
-
         const intGrid = document.getElementById('int-container');
-        intData.forEach(dest => {
+        ints.forEach(dest => {
             intGrid.innerHTML += `
                 <div class="dest-card" onclick="window.open('https://w.app/costaazul')">
-                    <img src="https://images.unsplash.com/photo-${dest.id}?auto=format&fit=crop&w=400&q=80" alt="${dest.n}">
+                    <img src="https://images.unsplash.com/photo-${dest.img}?auto=format&fit=crop&w=400&q=80" alt="${dest.n}">
                     <h4>${dest.n}</h4>
                     <div class="btn-cotizar-card">Cotizar Ahora</div>
                 </div>`;
