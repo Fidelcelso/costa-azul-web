@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,467 +12,202 @@
         .bg-navy { background-color: #001f3f; }
         .text-gold { color: #D4AF37; }
         .bg-gold { background-color: #D4AF37; }
+        .border-gold { border-color: #D4AF37; }
+        
         .hero-bg { 
-            background: linear-gradient(rgba(0,31,63,0.75), rgba(0,31,63,0.75)),
-            url('https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background: linear-gradient(rgba(0,31,63,0.7), rgba(0,31,63,0.7)),
+            url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
             background-size: cover; 
             background-position: center;
         }
-        .card-destino { transition: transform .25s ease, box-shadow .25s ease; }
-        .card-destino:hover { transform: translateY(-4px); box-shadow: 0 18px 30px rgba(0,0,0,0.12); }
+        .card-destino { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .card-destino:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
+        /* Barra de navegación con glassmorphism al hacer scroll */
+        .nav-scrolled { backdrop-filter: blur(10px); background-color: rgba(0, 31, 63, 0.9); }
     </style>
 </head>
 
 <body class="text-gray-800">
 
-<!-- NAV -->
-<nav class="bg-navy p-4 sticky top-0 z-50 shadow-2xl">
+<nav class="bg-navy p-4 sticky top-0 z-50 shadow-xl">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <h1 class="text-white text-xl tracking-wide font-bold uppercase">
+        <h1 class="text-white text-xl tracking-widest font-bold uppercase">
             COSTA <span class="text-gold">AZUL</span>
         </h1>
-        <div class="hidden md:flex space-x-6 text-[11px] uppercase tracking-normal text-white">
-            <a href="#inicio" class="hover:text-gold transition">Inicio</a>
-            <a href="#destinos-nacionales" class="hover:text-gold transition">Nacionales</a>
-            <a href="#destinos-internacionales" class="hover:text-gold transition">Internacionales</a>
-            <a href="#eventos" class="hover:text-gold transition">Eventos</a>
+        <div class="hidden md:flex space-x-8 text-[11px] uppercase tracking-widest text-white/80">
+            <a href="#inicio" class="hover:text-gold transition-colors">Inicio</a>
+            <a href="#destinos-nacionales" class="hover:text-gold transition-colors">Nacionales</a>
+            <a href="#destinos-internacionales" class="hover:text-gold transition-colors">Internacionales</a>
+            <a href="#eventos" class="hover:text-gold transition-colors">Eventos</a>
         </div>
-        <a href="https://wa.me/521" target="_blank" class="bg-gold text-navy px-4 py-1 text-[11px] font-bold uppercase rounded hover:bg-white transition">
+        <a href="https://wa.me/521" target="_blank" class="bg-gold text-navy px-6 py-2 text-[11px] font-bold uppercase rounded-sm hover:bg-white transition-all shadow-lg">
             WhatsApp
         </a>
     </div>
 </nav>
 
-<!-- INICIO -->
-<header id="inicio" class="hero-bg min-h-[70vh] flex items-center">
-    <div class="max-w-5xl mx-auto px-6 text-white">
-        <p class="text-[11px] tracking-wide uppercase mb-4 opacity-80">Bienvenido a Costa Azul Operadora</p>
-        <h2 class="text-4xl md:text-5xl font-light uppercase tracking-tight italic mb-6">
-            Diseñamos viajes que se convierten en recuerdos imborrables.
-        </h2>
-        <p class="text-sm md:text-base font-light leading-relaxed mb-10 opacity-90 max-w-3xl">
-            Somos una operadora de viajes integral enfocada en experiencias cuidadosamente curadas. 
-            Cada itinerario combina confort, autenticidad y excelencia operativa para que tus viajeros solo se preocupen por disfrutar.
-        </p>
+<header id="inicio" class="hero-bg min-h-[85vh] flex items-center">
+    <div class="max-w-6xl mx-auto px-6 text-white">
+        <div class="max-w-3xl">
+            <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 font-semibold">Luxury Travel Experience</p>
+            <h2 class="text-5xl md:text-7xl font-light uppercase tracking-tight italic mb-8 leading-tight">
+                Viajes que <br><span class="font-bold not-italic">trascienden.</span>
+            </h2>
+            <p class="text-lg font-light leading-relaxed mb-12 opacity-90 border-l-2 border-gold pl-6">
+                Diseñamos itinerarios a medida donde el lujo se encuentra con la autenticidad. Operación impecable para viajeros exigentes.
+            </p>
+        </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="border border-white/30 rounded-lg p-5 bg-white/5 backdrop-blur">
-                <h3 class="text-gold text-xs uppercase tracking-wide mb-3">Misión</h3>
-                <p class="text-[11px] leading-relaxed font-light">
-                    Ofrecer experiencias de viaje únicas y personalizadas, transformando cada destino en un recuerdo imborrable mediante una operación precisa y un acompañamiento cercano.
-                </p>
+        <div class="grid md:grid-cols-3 gap-6 mt-12">
+            <div class="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-sm">
+                <h3 class="text-gold text-xs uppercase tracking-widest mb-3 font-bold">Misión</h3>
+                <p class="text-xs leading-relaxed opacity-80">Crear experiencias personalizadas con logística de precisión, transformando destinos en legados emocionales.</p>
             </div>
-            <div class="border border-white/30 rounded-lg p-5 bg-white/5 backdrop-blur">
-                <h3 class="text-gold text-xs uppercase tracking-wide mb-3">Visión</h3>
-                <p class="text-[11px] leading-relaxed font-light">
-                    Ser la operadora líder en el mercado hispanohablante, reconocida por innovar y revolucionar la forma en que las personas descubren el mundo.
-                </p>
+            <div class="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-sm">
+                <h3 class="text-gold text-xs uppercase tracking-widest mb-3 font-bold">Visión</h3>
+                <p class="text-xs leading-relaxed opacity-80">Liderar el mercado premium hispanohablante, redefiniendo el estándar de excelencia operativa global.</p>
             </div>
-            <div class="border border-white/30 rounded-lg p-5 bg-white/5 backdrop-blur">
-                <h3 class="text-gold text-xs uppercase tracking-wide mb-3">Compromiso</h3>
-                <p class="text-[11px] leading-relaxed font-light">
-                    Garantizar seguridad, transparencia y calidad superior en cada detalle del viaje, desde la planeación hasta el regreso.
-                </p>
+            <div class="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-sm">
+                <h3 class="text-gold text-xs uppercase tracking-widest mb-3 font-bold">Excelencia</h3>
+                <p class="text-xs leading-relaxed opacity-80">Garantizamos seguridad y curaduría de alto nivel en cada kilómetro de su recorrido.</p>
             </div>
         </div>
     </div>
 </header>
 
-<!-- DESTINOS NACIONALES -->
-<section id="destinos-nacionales" class="py-20 bg-gray-50">
+<section id="destinos-nacionales" class="py-24 bg-gray-50">
     <div class="max-w-6xl mx-auto px-6">
-        <div class="mb-10 text-center">
-            <p class="text-[11px] uppercase tracking-wide text-gold mb-2">Catálogo Costa Azul</p>
-            <h3 class="text-2xl md:text-3xl text-navy uppercase italic tracking-wide">Destinos Nacionales</h3>
-            <p class="text-[12px] text-gray-600 mt-3 max-w-2xl mx-auto">
-                Una selección curada de los destinos más emblemáticos de México, pensados para grupos, 
-                familias, parejas y viajeros que buscan experiencias auténticas con respaldo profesional.
-            </p>
+        <div class="mb-16 text-center">
+            <p class="text-[11px] uppercase tracking-[0.4em] text-gold mb-3 font-bold">Explora México</p>
+            <h3 class="text-3xl md:text-4xl text-navy uppercase font-light tracking-widest italic">Tesoros Nacionales</h3>
+            <div class="h-1 w-20 bg-gold mx-auto mt-4"></div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-
-            <!-- 1 Cancún -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/3601424/pexels-photo-3601424.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Cancún</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Playas de arena blanca y mar turquesa, hoteles de clase mundial y vida nocturna vibrante. 
-                        Ideal para grupos, parejas y convenciones que buscan un equilibrio entre descanso y entretenimiento.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">
-                        Cotizar por WhatsApp
-                    </a>
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="bg-white rounded-sm overflow-hidden shadow-md card-destino group">
+                <div class="overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1544735745-b89b57c7eb8f?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="p-8">
+                    <h4 class="text-lg font-bold text-navy uppercase mb-3">Cancún</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-6">Azules infinitos y servicios All-Inclusive de diamante. El equilibrio perfecto entre fiesta y relajación total.</p>
+                    <a href="https://wa.me/521" class="text-[10px] uppercase font-bold text-gold border-b border-gold pb-1 hover:text-navy transition-all">Consultar Itinerario</a>
                 </div>
             </div>
 
-            <!-- 2 Los Cabos -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/460376/pexels-photo-460376.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Los Cabos</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Paisajes desérticos que se funden con el mar, campos de golf de lujo y resorts exclusivos. 
-                        Perfecto para viajes de descanso sofisticado, lunas de miel y grupos que buscan privacidad y confort.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">
-                        Cotizar por WhatsApp
-                    </a>
+            <div class="bg-white rounded-sm overflow-hidden shadow-md card-destino group">
+                <div class="overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1590577976322-3d2d6e2133de?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="p-8">
+                    <h4 class="text-lg font-bold text-navy uppercase mb-3">Los Cabos</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-6">Donde el desierto se encuentra con el Mar de Cortés. Exclusividad, golf de clase mundial y pesca deportiva.</p>
+                    <a href="https://wa.me/521" class="text-[10px] uppercase font-bold text-gold border-b border-gold pb-1 hover:text-navy transition-all">Consultar Itinerario</a>
                 </div>
             </div>
 
-            <!-- 3 Riviera Maya -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Riviera Maya</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Una combinación de playas, cenotes y zonas arqueológicas que ofrece experiencias culturales y de relajación. 
-                        Ideal para viajeros que buscan naturaleza, historia y servicios todo incluido de alto nivel.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">
-                        Cotizar por WhatsApp
-                    </a>
+            <div class="bg-white rounded-sm overflow-hidden shadow-md card-destino group">
+                <div class="overflow-hidden h-64">
+                    <img src="https://images.unsplash.com/photo-1512813195391-454ca433433e?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="p-8">
+                    <h4 class="text-lg font-bold text-navy uppercase mb-3">Oaxaca</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed mb-6">Un viaje sensorial a través de la cultura y el mezcal. El corazón místico y gastronómico de México.</p>
+                    <a href="https://wa.me/521" class="text-[10px] uppercase font-bold text-gold border-b border-gold pb-1 hover:text-navy transition-all">Consultar Itinerario</a>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
 
-            <!-- 4 Puerto Vallarta -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Puerto Vallarta</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Un malecón icónico, atardeceres espectaculares y una mezcla perfecta entre tradición y modernidad. 
-                        Recomendado para grupos, familias y escapadas románticas con un ambiente cálido y acogedor.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">
-                        Cotizar por WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- 5 Tulum -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Tulum</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Ruinas frente al mar, hoteles boutique y una atmósfera bohemia de alto nivel. 
-                        Ideal para viajeros que buscan experiencias íntimas, sostenibles y con un enfoque en bienestar y diseño.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">
-                        Cotizar por WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- 6 Oaxaca -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/2082103/pexels-photo-2082103.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Oaxaca</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Capital cultural y gastronómica, con arquitectura colonial, mercados tradicionales y pueblos mágicos cercanos. 
-                        Perfecto para viajeros que valoran la historia, el arte y la cocina mexicana de autor.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">
-                        Cotizar por WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- 7 Mérida -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/3601424/pexels-photo-3601424.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Mérida</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Ciudad tranquila y elegante, cercana a haciendas, cenotes y zonas arqueológicas. 
-                        Ideal para quienes buscan un ritmo pausado, seguridad y una fuerte identidad cultural yucateca.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">
-                        Cotizar por WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- 8 San Miguel de Allende -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/2082103/pexels-photo-2082103.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">San Miguel de Allende</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Calles empedradas, arquitectura colonial y una escena artística vibrante. 
-                        Recomendado para escapadas románticas, bodas destino y grupos que buscan un ambiente sofisticado y fotogénico.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">
-                        Cotizar por WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- 9 Mazatlán -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/3601424/pexels-photo-3601424.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Mazatlán</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Un malecón extenso, playas amplias y un centro histórico en recuperación. 
-                        Ideal para grupos grandes, convenciones y familias que buscan un destino de playa con esencia tradicional.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">
-                        Cotizar por WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- 10 Huatulco -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/1450353/pexels-photo-1450353.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Huatulco</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Bahías tranquilas, hoteles frente al mar y un entorno más reservado. 
-                        Perfecto para grupos que buscan privacidad, contacto con la naturaleza y un ambiente relajado lejos de las multitudes.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">
-                        Cotizar por WhatsApp
-                    </a>
-                </div>
-            </div>
-
-            <!-- 11 Puebla -->
-            <div class="bg-white rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/302820/pexels-photo-302820.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Puebla</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Ciudad colonial con una gastronomía reconocida mundialmente y cercanía a pueblos mágicos. 
-                        Ideal para viajes culturales, gastronómicos y circuitos por el centro del país.
-                    </p>
-                    <
-                        <!-- DESTINOS INTERNACIONALES -->
-<section id="destinos-internacionales" class="py-20 bg-white">
+<section id="destinos-internacionales" class="py-24 bg-white">
     <div class="max-w-6xl mx-auto px-6">
-        <div class="mb-10 text-center">
-            <p class="text-[11px] uppercase tracking-wide text-gold mb-2">Catálogo Costa Azul</p>
-            <h3 class="text-2xl md:text-3xl text-navy uppercase italic tracking-wide">Destinos Internacionales</h3>
-            <p class="text-[12px] text-gray-600 mt-3 max-w-2xl mx-auto">
-                Una selección de ciudades y paraísos alrededor del mundo, pensados para viajeros que buscan experiencias 
-                internacionales con el respaldo logístico y operativo de una operadora especializada.
-            </p>
+        <div class="mb-16 text-center">
+            <p class="text-[11px] uppercase tracking-[0.4em] text-gold mb-3 font-bold">Vuela Alto</p>
+            <h3 class="text-3xl md:text-4xl text-navy uppercase font-light tracking-widest italic">Rutas Globales</h3>
+            <div class="h-1 w-20 bg-gold mx-auto mt-4"></div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-
-            <!-- 1 París -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">París</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        La ciudad de la luz, con íconos como la Torre Eiffel y el Louvre. 
-                        Ideal para viajes románticos, culturales y circuitos europeos que combinan arte, historia y gastronomía refinada.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
+        <div class="grid md:grid-cols-3 gap-10">
+            <div class="group cursor-pointer">
+                <div class="relative overflow-hidden rounded-sm h-80">
+                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    <div class="absolute inset-0 bg-navy/40 group-hover:bg-transparent transition-all"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="text-white text-xl font-bold uppercase tracking-widest">París</h4>
+                        <p class="text-gold text-[10px] uppercase font-bold">Francia</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- 2 Madrid -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/460376/pexels-photo-460376.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Madrid</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Capital española con museos de talla mundial, plazas llenas de vida y gastronomía vibrante. 
-                        Perfecta para circuitos por España y Europa, así como viajes culturales y de compras.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
+            <div class="group cursor-pointer">
+                <div class="relative overflow-hidden rounded-sm h-80">
+                    <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    <div class="absolute inset-0 bg-navy/40 group-hover:bg-transparent transition-all"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="text-white text-xl font-bold uppercase tracking-widest">Tokio</h4>
+                        <p class="text-gold text-[10px] uppercase font-bold">Japón</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- 3 Nueva York -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Nueva York</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Ciudad icónica de rascacielos, Broadway y Central Park. 
-                        Ideal para viajes urbanos, compras, espectáculos y como punto de partida para circuitos por la costa este de Estados Unidos.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
+            <div class="group cursor-pointer">
+                <div class="relative overflow-hidden rounded-sm h-80">
+                    <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                    <div class="absolute inset-0 bg-navy/40 group-hover:bg-transparent transition-all"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <h4 class="text-white text-xl font-bold uppercase tracking-widest">Roma</h4>
+                        <p class="text-gold text-[10px] uppercase font-bold">Italia</p>
+                    </div>
                 </div>
             </div>
+        </div>
+        
+        <div class="text-center mt-16">
+            <a href="https://wa.me/521" class="inline-block border border-navy px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-navy hover:text-white transition-all">Ver Catálogo Completo</a>
+        </div>
+    </div>
+</section>
 
-            <!-- 4 Tokio -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/2082103/pexels-photo-2082103.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Tokio</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Megaciudad que combina tradición milenaria con tecnología de punta. 
-                        Recomendado para viajeros curiosos que buscan cultura, gastronomía y experiencias urbanas únicas en Asia.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
-                </div>
+<section id="eventos" class="py-24 bg-navy text-white overflow-hidden relative">
+    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+        <h3 class="text-gold text-xs uppercase tracking-[0.5em] mb-6">MICE & Wedding Planner</h3>
+        <h2 class="text-4xl md:text-5xl font-light italic mb-8 uppercase">Eventos que hacen <br><b>historia.</b></h2>
+        <p class="text-sm opacity-70 leading-loose mb-12 font-light">Especialistas en logística masiva y curaduría de bodas. Convertimos sus objetivos corporativos o sueños personales en una realidad operativa impecable.</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="border border-white/10 p-4 hover:border-gold/50 transition-colors">
+                <p class="text-[10px] uppercase font-bold tracking-widest">Bodas Destino</p>
             </div>
-
-            <!-- 5 Londres -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/460376/pexels-photo-460376.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Londres</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Capital británica con íconos como el Big Ben, el Támesis y museos gratuitos. 
-                        Ideal para circuitos por Reino Unido y Europa, así como viajes educativos y culturales.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
-                </div>
+            <div class="border border-white/10 p-4 hover:border-gold/50 transition-colors">
+                <p class="text-[10px] uppercase font-bold tracking-widest">Incentivos</p>
             </div>
-
-            <!-- 6 Roma -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Roma</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Ciudad eterna donde conviven ruinas romanas, plazas barrocas y gastronomía italiana. 
-                        Perfecta para circuitos por Italia y Europa, así como viajes culturales y religiosos.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
-                </div>
+            <div class="border border-white/10 p-4 hover:border-gold/50 transition-colors">
+                <p class="text-[10px] uppercase font-bold tracking-widest">Convenciones</p>
             </div>
-
-            <!-- 7 Dubái -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Dubái</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Ciudad de contrastes entre el desierto y la arquitectura futurista. 
-                        Ideal para viajes de lujo, compras, eventos y como escala estratégica hacia Asia y África.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
-                </div>
+            <div class="border border-white/10 p-4 hover:border-gold/50 transition-colors">
+                <p class="text-[10px] uppercase font-bold tracking-widest">Lanzamientos</p>
             </div>
+        </div>
+    </div>
+</section>
 
-            <!-- 8 Barcelona -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/460376/pexels-photo-460376.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Barcelona</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Ciudad mediterránea con arquitectura de Gaudí, playas urbanas y vida nocturna activa. 
-                        Recomendable para circuitos por España, viajes de verano y grupos jóvenes o familiares.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
-                </div>
+<footer class="bg-white py-12 border-t border-gray-100">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            <div>
+                <h4 class="text-navy font-bold uppercase tracking-widest text-lg">COSTA <span class="text-gold">AZUL</span></h4>
+                <p class="text-[10px] text-gray-400 uppercase tracking-widest mt-1 italic text-center md:text-left">Excelencia en cada viaje.</p>
             </div>
-
-            <!-- 9 Ámsterdam -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/466685/pexels-photo-466685.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Ámsterdam</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Canales, bicicletas y museos de talla mundial en una ciudad compacta y amigable. 
-                        Ideal para circuitos por Europa del norte y viajes culturales con un ritmo relajado.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
-                </div>
+            <div class="flex space-x-8 text-[10px] uppercase font-bold tracking-tighter text-gray-400">
+                <a href="#" class="hover:text-gold transition">Instagram</a>
+                <a href="#" class="hover:text-gold transition">LinkedIn</a>
+                <a href="#" class="hover:text-gold transition">Términos</a>
             </div>
+            <p class="text-[9px] text-gray-400 uppercase">© 2026 Costa Azul Operadora S.A. de C.V.</p>
+        </div>
+    </div>
+</footer>
 
-            <!-- 10 Venecia -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Venecia</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Ciudad construida sobre canales, con góndolas y palacios históricos. 
-                        Perfecta para viajes románticos, circuitos por Italia y experiencias fotográficas únicas.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
-                </div>
-            </div>
-
-            <!-- 11 Seúl -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/2082103/pexels-photo-2082103.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Seúl</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Capital de Corea del Sur, donde conviven palacios tradicionales y barrios modernos. 
-                        Ideal para viajeros interesados en cultura pop, tecnología y gastronomía asiática contemporánea.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
-                </div>
-            </div>
-
-            <!-- 12 Sídney -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Sídney</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Ciudad australiana con la icónica Ópera y playas cercanas. 
-                        Recomendable para viajes de larga distancia, combinados con otros destinos de Oceanía y experiencias al aire libre.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
-                </div>
-            </div>
-
-            <!-- 13 Berlín -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Berlín</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Ciudad marcada por la historia reciente, con una escena cultural y creativa muy activa. 
-                        Ideal para viajeros interesados en historia, arte contemporáneo y vida nocturna alternativa.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
-                </div>
-            </div>
-
-            <!-- 14 Bali -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Bali</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Isla indonesia de arrozales, templos y playas. 
-                        Perfecta para retiros, lunas de miel y viajes de bienestar con un enfoque espiritual y natural.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
-                </div>
-            </div>
-
-            <!-- 15 Santorini -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Santorini</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Isla griega de casas blancas y cúpulas azules frente al mar Egeo. 
-                        Ideal para lunas de miel, viajes románticos y circuitos por las islas griegas.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
-                </div>
-            </div>
-
-            <!-- 16 Pekín -->
-            <div class="bg-gray-50 rounded-lg overflow-hidden shadow-sm card-destino">
-                <img src="https://images.pexels.com/photos/2082103/pexels-photo-2082103.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-56 object-cover">
-                <div class="p-5">
-                    <h4 class="text-sm font-semibold text-navy uppercase mb-2">Pekín</h4>
-                    <p class="text-[12px] text-gray-600 mb-4">
-                        Capital china con palacios imperiales, plazas monumentales y acceso a la Gran Muralla. 
-                        Recomendable para circuitos por Asia y viajes culturales de larga distancia.
-                    </p>
-                    <a href="https://wa.me/521" class="inline-block text-[11px] uppercase font-bold text-gold border border-gold px-4 py-1.5 hover:bg-gold hover:text-navy transition">Cotizar por WhatsApp</a>
-                </div>
-            </div>
-
-            <!-- 17 Toronto -->
-            <div class="bg
+</body>
+</html>
