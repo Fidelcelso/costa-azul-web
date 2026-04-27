@@ -5,209 +5,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Costa Azul | Operadora de Viajes Integral</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; }
+        body { font-family: 'Montserrat', sans-serif; }
         .bg-navy { background-color: #001f3f; }
         .text-gold { color: #D4AF37; }
         .bg-gold { background-color: #D4AF37; }
-        .border-gold { border-color: #D4AF37; }
         
-        .hero-bg { 
-            background: linear-gradient(rgba(0,31,63,0.7), rgba(0,31,63,0.7)),
-            url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover; 
-            background-position: center;
-        }
-        .card-destino { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .card-destino:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        /* Efecto de zoom en imágenes */
+        .zoom-img { transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .card-destino:hover .zoom-img { transform: scale(1.1); }
         
-        /* Barra de navegación con glassmorphism al hacer scroll */
-        .nav-scrolled { backdrop-filter: blur(10px); background-color: rgba(0, 31, 63, 0.9); }
+        /* Glassmorphism Header */
+        .nav-active { backdrop-filter: blur(10px); background-color: rgba(0, 31, 63, 0.95); }
     </style>
 </head>
+<body class="bg-white text-slate-800">
 
-<body class="text-gray-800">
-
-<nav class="bg-navy p-4 sticky top-0 z-50 shadow-xl">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <h1 class="text-white text-xl tracking-widest font-bold uppercase">
+<nav id="navbar" class="fixed w-full z-50 transition-all duration-300 p-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <h1 class="text-white text-2xl font-bold tracking-tighter uppercase">
             COSTA <span class="text-gold">AZUL</span>
         </h1>
-        <div class="hidden md:flex space-x-8 text-[11px] uppercase tracking-widest text-white/80">
-            <a href="#inicio" class="hover:text-gold transition-colors">Inicio</a>
-            <a href="#destinos-nacionales" class="hover:text-gold transition-colors">Nacionales</a>
-            <a href="#destinos-internacionales" class="hover:text-gold transition-colors">Internacionales</a>
-            <a href="#eventos" class="hover:text-gold transition-colors">Eventos</a>
+        <div class="hidden md:flex space-x-8 text-[11px] font-bold uppercase tracking-widest text-white/90">
+            <a href="#inicio" class="hover:text-gold transition">Inicio</a>
+            <a href="#destinos-nacionales" class="hover:text-gold transition">Nacionales</a>
+            <a href="#destinos-internacionales" class="hover:text-gold transition">Internacionales</a>
+            <a href="#eventos" class="hover:text-gold transition">Eventos</a>
         </div>
-        <a href="https://wa.me/521" target="_blank" class="bg-gold text-navy px-6 py-2 text-[11px] font-bold uppercase rounded-sm hover:bg-white transition-all shadow-lg">
-            WhatsApp
+        <a href="https://wa.me/521?text=Hola%20Costa%20Azul,%20deseo%20m%C3%A1s%20informaci%C3%B3n" class="bg-gold text-white px-5 py-2 text-[10px] font-bold uppercase rounded-sm shadow-xl hover:bg-white hover:text-navy transition">
+            Contacto Directo
         </a>
     </div>
 </nav>
 
-<header id="inicio" class="hero-bg min-h-[85vh] flex items-center">
-    <div class="max-w-6xl mx-auto px-6 text-white">
-        <div class="max-w-3xl">
-            <p class="text-gold text-xs uppercase tracking-[0.3em] mb-4 font-semibold">Luxury Travel Experience</p>
-            <h2 class="text-5xl md:text-7xl font-light uppercase tracking-tight italic mb-8 leading-tight">
-                Viajes que <br><span class="font-bold not-italic">trascienden.</span>
-            </h2>
-            <p class="text-lg font-light leading-relaxed mb-12 opacity-90 border-l-2 border-gold pl-6">
-                Diseñamos itinerarios a medida donde el lujo se encuentra con la autenticidad. Operación impecable para viajeros exigentes.
-            </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-6 mt-12">
-            <div class="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-sm">
-                <h3 class="text-gold text-xs uppercase tracking-widest mb-3 font-bold">Misión</h3>
-                <p class="text-xs leading-relaxed opacity-80">Crear experiencias personalizadas con logística de precisión, transformando destinos en legados emocionales.</p>
-            </div>
-            <div class="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-sm">
-                <h3 class="text-gold text-xs uppercase tracking-widest mb-3 font-bold">Visión</h3>
-                <p class="text-xs leading-relaxed opacity-80">Liderar el mercado premium hispanohablante, redefiniendo el estándar de excelencia operativa global.</p>
-            </div>
-            <div class="p-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-sm">
-                <h3 class="text-gold text-xs uppercase tracking-widest mb-3 font-bold">Excelencia</h3>
-                <p class="text-xs leading-relaxed opacity-80">Garantizamos seguridad y curaduría de alto nivel en cada kilómetro de su recorrido.</p>
-            </div>
-        </div>
+<section id="inicio" class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1469122312224-c5846569efe1?q=80&w=1920&auto=format&fit=crop" class="w-full h-full object-cover grayscale-[20%]" alt="Hero">
+        <div class="absolute inset-0 bg-navy/60"></div>
     </div>
-</header>
+    
+    <div class="relative z-10 text-center px-6">
+        <span class="text-gold text-xs uppercase tracking-[0.5em] mb-4 block font-bold">Luxury Travel & Logistics</span>
+        <h2 class="text-4xl md:text-7xl font-bold text-white uppercase italic leading-tight mb-6">
+            Experiencias que <br><span class="not-italic text-gold">revolucionan</span> el viaje.
+        </h2>
+        <p class="text-white/80 max-w-2xl mx-auto text-sm md:text-base font-light leading-relaxed mb-10">
+            Somos la operadora integral que fusiona tecnología, confort y destinos únicos. Diseñamos el viaje, tú creas la historia.
+        </p>
+        <a href="#destinos-nacionales" class="border border-white text-white px-8 py-3 text-xs uppercase font-bold tracking-widest hover:bg-white hover:text-navy transition">
+            Explorar Catálogo
+        </a>
+    </div>
+</section>
 
-<section id="destinos-nacionales" class="py-24 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="mb-16 text-center">
-            <p class="text-[11px] uppercase tracking-[0.4em] text-gold mb-3 font-bold">Explora México</p>
-            <h3 class="text-3xl md:text-4xl text-navy uppercase font-light tracking-widest italic">Tesoros Nacionales</h3>
-            <div class="h-1 w-20 bg-gold mx-auto mt-4"></div>
+<section class="py-20 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+        <div class="text-center">
+            <div class="text-gold text-4xl mb-4">✦</div>
+            <h4 class="text-navy font-bold uppercase text-sm mb-2">Curaduría Premium</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">Seleccionamos cada hotel y guía bajo estándares de excelencia operativa.</p>
         </div>
-
-        <div class="grid md:grid-cols-3 gap-10">
-            <div class="bg-white rounded-sm overflow-hidden shadow-md card-destino group">
-                <div class="overflow-hidden h-64">
-                    <img src="https://images.unsplash.com/photo-1544735745-b89b57c7eb8f?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="p-8">
-                    <h4 class="text-lg font-bold text-navy uppercase mb-3">Cancún</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed mb-6">Azules infinitos y servicios All-Inclusive de diamante. El equilibrio perfecto entre fiesta y relajación total.</p>
-                    <a href="https://wa.me/521" class="text-[10px] uppercase font-bold text-gold border-b border-gold pb-1 hover:text-navy transition-all">Consultar Itinerario</a>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-sm overflow-hidden shadow-md card-destino group">
-                <div class="overflow-hidden h-64">
-                    <img src="https://images.unsplash.com/photo-1590577976322-3d2d6e2133de?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="p-8">
-                    <h4 class="text-lg font-bold text-navy uppercase mb-3">Los Cabos</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed mb-6">Donde el desierto se encuentra con el Mar de Cortés. Exclusividad, golf de clase mundial y pesca deportiva.</p>
-                    <a href="https://wa.me/521" class="text-[10px] uppercase font-bold text-gold border-b border-gold pb-1 hover:text-navy transition-all">Consultar Itinerario</a>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-sm overflow-hidden shadow-md card-destino group">
-                <div class="overflow-hidden h-64">
-                    <img src="https://images.unsplash.com/photo-1512813195391-454ca433433e?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                </div>
-                <div class="p-8">
-                    <h4 class="text-lg font-bold text-navy uppercase mb-3">Oaxaca</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed mb-6">Un viaje sensorial a través de la cultura y el mezcal. El corazón místico y gastronómico de México.</p>
-                    <a href="https://wa.me/521" class="text-[10px] uppercase font-bold text-gold border-b border-gold pb-1 hover:text-navy transition-all">Consultar Itinerario</a>
-                </div>
-            </div>
+        <div class="text-center">
+            <div class="text-gold text-4xl mb-4">✦</div>
+            <h4 class="text-navy font-bold uppercase text-sm mb-2">Logística Integral</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">Desde el traslado hasta el evento, controlamos cada detalle del itinerario.</p>
+        </div>
+        <div class="text-center">
+            <div class="text-gold text-4xl mb-4">✦</div>
+            <h4 class="text-navy font-bold uppercase text-sm mb-2">Soporte 24/7</h4>
+            <p class="text-xs text-slate-500 leading-relaxed">Acompañamiento constante para garantizar seguridad y tranquilidad total.</p>
         </div>
     </div>
 </section>
 
-<section id="destinos-internacionales" class="py-24 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="mb-16 text-center">
-            <p class="text-[11px] uppercase tracking-[0.4em] text-gold mb-3 font-bold">Vuela Alto</p>
-            <h3 class="text-3xl md:text-4xl text-navy uppercase font-light tracking-widest italic">Rutas Globales</h3>
-            <div class="h-1 w-20 bg-gold mx-auto mt-4"></div>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-10">
-            <div class="group cursor-pointer">
-                <div class="relative overflow-hidden rounded-sm h-80">
-                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                    <div class="absolute inset-0 bg-navy/40 group-hover:bg-transparent transition-all"></div>
-                    <div class="absolute bottom-6 left-6">
-                        <h4 class="text-white text-xl font-bold uppercase tracking-widest">París</h4>
-                        <p class="text-gold text-[10px] uppercase font-bold">Francia</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="group cursor-pointer">
-                <div class="relative overflow-hidden rounded-sm h-80">
-                    <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                    <div class="absolute inset-0 bg-navy/40 group-hover:bg-transparent transition-all"></div>
-                    <div class="absolute bottom-6 left-6">
-                        <h4 class="text-white text-xl font-bold uppercase tracking-widest">Tokio</h4>
-                        <p class="text-gold text-[10px] uppercase font-bold">Japón</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="group cursor-pointer">
-                <div class="relative overflow-hidden rounded-sm h-80">
-                    <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                    <div class="absolute inset-0 bg-navy/40 group-hover:bg-transparent transition-all"></div>
-                    <div class="absolute bottom-6 left-6">
-                        <h4 class="text-white text-xl font-bold uppercase tracking-widest">Roma</h4>
-                        <p class="text-gold text-[10px] uppercase font-bold">Italia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="text-center mt-16">
-            <a href="https://wa.me/521" class="inline-block border border-navy px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-navy hover:text-white transition-all">Ver Catálogo Completo</a>
-        </div>
-    </div>
-</section>
-
-<section id="eventos" class="py-24 bg-navy text-white overflow-hidden relative">
-    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-        <h3 class="text-gold text-xs uppercase tracking-[0.5em] mb-6">MICE & Wedding Planner</h3>
-        <h2 class="text-4xl md:text-5xl font-light italic mb-8 uppercase">Eventos que hacen <br><b>historia.</b></h2>
-        <p class="text-sm opacity-70 leading-loose mb-12 font-light">Especialistas en logística masiva y curaduría de bodas. Convertimos sus objetivos corporativos o sueños personales en una realidad operativa impecable.</p>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="border border-white/10 p-4 hover:border-gold/50 transition-colors">
-                <p class="text-[10px] uppercase font-bold tracking-widest">Bodas Destino</p>
-            </div>
-            <div class="border border-white/10 p-4 hover:border-gold/50 transition-colors">
-                <p class="text-[10px] uppercase font-bold tracking-widest">Incentivos</p>
-            </div>
-            <div class="border border-white/10 p-4 hover:border-gold/50 transition-colors">
-                <p class="text-[10px] uppercase font-bold tracking-widest">Convenciones</p>
-            </div>
-            <div class="border border-white/10 p-4 hover:border-gold/50 transition-colors">
-                <p class="text-[10px] uppercase font-bold tracking-widest">Lanzamientos</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer class="bg-white py-12 border-t border-gray-100">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+<section id="destinos-nacionales" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16">
             <div>
-                <h4 class="text-navy font-bold uppercase tracking-widest text-lg">COSTA <span class="text-gold">AZUL</span></h4>
-                <p class="text-[10px] text-gray-400 uppercase tracking-widest mt-1 italic text-center md:text-left">Excelencia en cada viaje.</p>
+                <h3 class="text-navy text-3xl font-bold uppercase italic">Rutas Nacionales</h3>
+                <p class="text-gold text-xs uppercase tracking-widest mt-2 font-bold">Lo mejor de México para el mundo</p>
             </div>
-            <div class="flex space-x-8 text-[10px] uppercase font-bold tracking-tighter text-gray-400">
-                <a href="#" class="hover:text-gold transition">Instagram</a>
-                <a href="#" class="hover:text-gold transition">LinkedIn</a>
-                <a href="#" class="hover:text-gold transition">Términos</a>
-            </div>
-            <p class="text-[9px] text-gray-400 uppercase">© 2026 Costa Azul Operadora S.A. de C.V.</p>
+            <div class="h-[1px] flex-grow mx-8 bg-slate-200 hidden md:block"></div>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="card-destino relative overflow-hidden h-[450px] group cursor-pointer shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1510133769068-ad0a026bc360?auto=format&fit=crop&w=800&q=80" class="zoom-img absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent opacity-90"></div>
+                <div class="absolute bottom-0 p-6">
+                    <h5 class="text-white text-xl font-bold uppercase italic mb-2">Cancún</h5>
+                    <p class="text-white/70 text-[10px] leading-relaxed mb-4">Paraísos turquesa y exclusividad en el Caribe Mexicano.</p>
+                    <a href="https://wa.me/521?text=Me%20interesa%20un%20viaje%20a%20Cancun" class="text-gold text-[10px] font-bold uppercase border-b border-gold">Cotizar Ahora</a>
+                </div>
+            </div>
+
+            <div class="card-destino relative overflow-hidden h-[450px] group cursor-pointer shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1594993872002-36c58908479e?auto=format&fit=crop&w=800&q=80" class="zoom-img absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent opacity-90"></div>
+                <div class="absolute bottom-0 p-6">
+                    <h5 class="text-white text-xl font-bold uppercase italic mb-2">Los Cabos</h5>
+                    <p class="text-white/70 text-[10px] leading-relaxed mb-4">El lujo del desierto frente al Mar de Cortés.</p>
+                    <a href="https://wa.me/521?text=Me%20interesa%20un%20viaje%20a%20Los%20Cabos" class="text-gold text-[10px] font-bold uppercase border-b border-gold">Cotizar Ahora</a>
+                </div>
+            </div>
+
+            <div class="card-destino relative overflow-hidden h-[450px] group cursor-pointer shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?auto=format&fit=crop&w=800&q=80" class="zoom-img absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent opacity-90"></div>
+                <div class="absolute bottom-0 p-6">
+                    <h5 class="text-white text-xl font-bold uppercase italic mb-2">Oaxaca</h5>
+                    <p class="text-white/70 text-[10px] leading-relaxed mb-4">Tradición, gastronomía y el alma de México.</p>
+                    <a href="https://wa.me/521?text=Me%20interesa%20un%20viaje%20a%20Oaxaca" class="text-gold text-[10px] font-bold uppercase border-b border-gold">Cotizar Ahora</a>
+                </div>
+            </div>
+
+            <div class="card-destino relative overflow-hidden h-[450px] group cursor-pointer shadow-2xl">
+                <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ca1?auto=format&fit=crop&w=800&q=80" class="zoom-img absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-navy via-transparent to-transparent opacity-90"></div>
+                <div class="absolute bottom-0 p-6">
+                    <h5 class="text-white text-xl font-bold uppercase italic mb-2">Tulum</h5>
+                    <p class="text-white/70 text-[10px] leading-relaxed mb-4">Boutique, eco-lujo y ruinas mayas frente al mar.</p>
+                    <a href="https://wa.me/521?text=Me%20interesa%20un%20viaje%20a%20Tulum" class="text-gold text-[10px] font-bold uppercase border-b border-gold">Cotizar Ahora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="eventos" class="py-24 bg-navy text-white text-center">
+    <div class="max-w-4xl mx-auto px-6">
+        <h3 class="text-gold text-xs uppercase tracking-[0.5em] mb-6 font-bold">Especialistas en Eventos</h3>
+        <h2 class="text-3xl md:text-5xl font-bold uppercase italic mb-8 leading-tight">Congresos, Convenciones <br>y Bodas de Destino</h2>
+        <p class="text-white/60 font-light leading-loose text-sm mb-12">
+            No solo organizamos viajes, ejecutamos logística de alto impacto. Desde grupos corporativos hasta eventos sociales de gran escala con la precisión de Costa Azul.
+        </p>
+        <div class="flex flex-wrap justify-center gap-6">
+            <span class="border-l border-gold px-4 text-[10px] uppercase tracking-widest font-bold">MICE Logistics</span>
+            <span class="border-l border-gold px-4 text-[10px] uppercase tracking-widest font-bold">VIP Concierge</span>
+            <span class="border-l border-gold px-4 text-[10px] uppercase tracking-widest font-bold">Group Travel</span>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-slate-900 text-white py-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div>
+            <h4 class="text-xl font-bold tracking-tighter uppercase">COSTA <span class="text-gold">AZUL</span></h4>
+            <p class="text-[9px] text-white/40 uppercase tracking-widest mt-2 italic text-center md:text-left">Operadora de Viajes Integral © 2026</p>
+        </div>
+        <div class="flex space-x-8 text-[10px] uppercase font-bold tracking-widest">
+            <a href="#" class="hover:text-gold">Instagram</a>
+            <a href="#" class="hover:text-gold">Privacidad</a>
+            <a href="#" class="hover:text-gold">Términos</a>
+        </div>
+        <p class="text-[9px] text-white/40 uppercase font-bold">Diseñado para la excelencia</p>
     </div>
 </footer>
+
+<script>
+    // Cambio de estilo del Navbar al hacer scroll
+    window.addEventListener('scroll', function() {
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            nav.classList.add('nav-active');
+            nav.classList.remove('p-4');
+            nav.classList.add('p-2');
+        } else {
+            nav.classList.remove('nav-active');
+            nav.classList.add('p-4');
+            nav.classList.remove('p-2');
+        }
+    });
+</script>
 
 </body>
 </html>
